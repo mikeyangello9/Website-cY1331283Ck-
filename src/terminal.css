@@ -8,7 +8,7 @@
   
     overflow-x: hidden;
     scrollbar-width:thin;
-    scrollbar-color: rgb(0, 0, 0) yellowgreen ;
+    scrollbar-color: rgb(0, 0, 0) rgb(255, 81, 0) ;
 
     
   }
@@ -62,7 +62,7 @@
   }
 
   .container{
-    background: #2d2d2d;
+    background: #ff6363;
   }
 
   .visual{
@@ -75,3 +75,25 @@
     height: 2rem;
     border: 1px solid beige;
   }
+
+  .terminal-input{
+    color: orangered;
+  }
+
+  .terminal-label{
+    color: orange;
+    border: 1px solid wheat;
+  }
+
+  .wrapper{
+    background: #2d2d2d;
+  }
+
+  .about{
+    background: #2d2d2d;
+    color: red;
+  }
+  .contents{
+    background: #2d2d2d;
+  }
+

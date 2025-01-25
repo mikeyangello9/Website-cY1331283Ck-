@@ -3,13 +3,16 @@ import { useLoader } from '@react-three/fiber'
 import { useControls } from 'leva'
 import { Perf } from 'r3f-perf'
 import { useEffect, useRef } from 'react'
-import Interface from './Interface'
+import { Routes,Route } from 'react-router-dom'
+
 import About from './About'
+
 import Contact from "./Contact"
+import Home from './Home'
 
 import Projects from "./Projects"
 import Notes from "./Notes"
-import { Route, Routes } from "react-router-dom"
+
 
 import * as THREE from 'three'
 
@@ -190,13 +193,17 @@ export default function Experience()
                     occlude
                 >
                 <iframe className='frame' src="terminal.html" ></iframe>
-
                 </Html>
+                
 
-                <Routes>
-                    <Route path="/About" element={
+            </primitive>
+
+        </Stage>
+
+        <Routes>
+                    {/* <Route path="/About" element={
                     <Html
-                        position={[4.5, 4.1, -1.088]}
+                        position={[0, 0, -1.088]}
                         transform rotateX={-0.25}
                         distanceFactor={4}
                         wrapperClass='terminal'
@@ -204,13 +211,13 @@ export default function Experience()
                         
                         
                     <div><About/></div>
-                    </Html>}></Route>
+                    </Html>}></Route> */}
 
-                    <Route path="/Projects" element={
+                    {/* <Route path="/Projects" element={
                     <Html
-                        position={[-4.5, 4, 0.01]}
+                        position={[z, 0, 8]}
                         transform rotateX={-0.25}
-                        rotation={[12.5, 0.4, 0]}
+                        rotation={[0, -2.30, 0]}
                         distanceFactor={4}
                         // wrapperClass='terminal'
                         center>
@@ -218,30 +225,50 @@ export default function Experience()
                     <div><Projects/></div>
                     
                     </Html>}>
-                    </Route>
+                    </Route> */}
 
-                    <Route path="/Contact" element={
-                    <Html
-                        position={[-0.6, 7.5, -1.088]}
+                    <Route path='/' element={
+                        <Html
+                        position={[2.23, 2, 6]}
                         transform rotateX={-0.25}
+                        rotation={[0,-1.6,0]}
                         distanceFactor={4}
                         // wrapperClass='terminal'
                         center
                     
                     >
                         
-                        <div><Contact/></div>
+                        <div><Home/></div>
                     
-                    </Html>}></Route>
+                    </Html>}>
 
-                    <Route path="/Notes" element={<Html><Notes/></Html>}></Route>
-                </Routes>
+                       
+                    </Route>
 
-            </primitive>
-        </Stage>
+                    <Route path="/Contact" element={
+                        <Html
+                            position={[2.23, 2, 6]}
+                            transform rotateX={-0.25}
+                            rotation={[0,-1.6,0]}
+                            distanceFactor={4}
+                            // wrapperClass='terminal'
+                            center
+                        
+                        >
+                            
+                            <div><Contact/></div>
+                        
+                        </Html>}>
+                    </Route>
+
+                    {/* <Route path="/Notes" element={<Html><Notes/></Html>}></Route> */}
+        </Routes>
+
+
       </Float>
-        
 
+                
+      
        
 
     </>

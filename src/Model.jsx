@@ -9,14 +9,14 @@ import { ChromaticAberration, EffectComposer, Pixelation } from "@react-three/po
 
 export default function Model(){
 
-    const { x, y, z } = useControls({ // debugger
-    x: 0,
-    y: 4.1,
-    z: 0
-    })
+    // const { x, y, z } = useControls({ // debugger
+    // x: 0,
+    // y: 4.1,
+    // z: 0
+    // })
 
 
-    const offset = {offset_x: 0.003, offset_y: 0.003}
+    const offset = useControls({offset_x: 0.003, offset_y: 0.003})
   
     return <>
 
@@ -53,12 +53,5 @@ export default function Model(){
         <Interface/>
 
 
-      
-       
-
-
-    
-        
-  
     </>
 }

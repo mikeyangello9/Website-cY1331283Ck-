@@ -3,6 +3,7 @@ const terminal = () => {
     const cycle = document.querySelector('.cycle')
     const header = document.querySelector('.intro')
     const blinkers = document.querySelectorAll('.blinker')
+    const visualDiv = document.querySelector('.visual')
     const randomiseColor = (element) => {
       setInterval(() => {
         let randColor
@@ -16,6 +17,10 @@ const terminal = () => {
     }
     
     randomiseColor(header)
+
+    
+
+
     
 
     const date = document.querySelector('.date')
@@ -40,8 +45,32 @@ const terminal = () => {
     date.dataset.value = `${year} ${month + 1} ${todayDate} ${hours}, ${minutes} ${seconds}`
     randomiseColor(date)
 
-    blinkers.forEach(blinker => randomiseColor(blinker))
+    blinkers.forEach(blinker => {
       
+      randomiseColor(blinker)
+      
+    })
+    let count = 0
+    
+
+    const loading = setInterval(() => {
+      const loadbars = document.createElement('div')
+      loadbars.classList.add('blinker')
+      for (let i = 0; i < 10; i++) {
+        visualDiv.appendChild(loadbars)
+        count++
+      }
+      if (count == 100) {
+        clearInterval(loading)
+        // const bars = visualDiv.childNodes
+
+      }
+    }, 1000)
+
+    
+    
+
+
     const hackerize = (element) => {
     const alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890';
     
@@ -76,31 +105,36 @@ const terminal = () => {
       /// terminal code 
       let container = document.querySelector(".container");
       container.style.display = "flex";
-      container.style.border = "none";
+      container.style.border = "1px solid white";
       container.style.flexDirection = "column";
       container.style.padding = '1rem'
       container.style.backgroundColor = ' #2d2d2d'
       container.style.borderRadius = '7px'
       container.style.fontSize = '1rem'
 
-      
-    
+      const asciiArt = ".,.,\______/;.;.;."
+
+  
+  
       const inputArray = [];
       document.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
           const wrapper = document.createElement("div");
+          wrapper.classList.add("wrapper")
           const input = document.createElement("input");
+          input.classList.add('terminal-input')
           // 
 
           input.classList.add('field')
           input.style.fontSize = '13px'
           const label = document.createElement("label");
-
+          label.classList.add('terminal-label')
           label.innerText = "user@>:";
           label.style.fontSize = '13px'
           input.type = "text"; 
     
           label.style.display = "block";
+          
     
           wrapper.style.display = "flex";
           wrapper.style.alignItems = "center";
@@ -109,7 +143,7 @@ const terminal = () => {
           input.style.marginRight = "10px";
           input.style.border = "none";
           input.style.display = "block";
-          input.style.border = "none";
+          
     
           input.addEventListener("focus", () => {
           input.style.border = "none";
@@ -151,7 +185,7 @@ const terminal = () => {
               console.log("checked"); // check
                
                contents = document.createElement('ul')
-               
+               contents.classList.add('contents')
                const about = document.createElement('li')
                about.innerText = '<< ABOUT >>'
                
@@ -159,7 +193,7 @@ const terminal = () => {
                about.style.color = 'aqua'
                about.dataValue = '<< ABOUT >>'
                about.classList.add('about')
-               about.style.background = '#2d2d2d'
+               
                
           
                const projects = document.createElement('li')
@@ -192,7 +226,7 @@ const terminal = () => {
                  console.log('right away!')
                  // about section
                  const about = document.createElement('p')
-                 about.innerText = 'I am an enthusiastic student with a deep interest in networking within the extensive cybersecurity domain. I had the opportunity to engage in a project where I conducted a comprehensive analysis of network traffic using Wireshark, specifically focusing on the identification of network packets.'
+                 about.innerText = `${asciiArt}\n I am an enthusiastic student with a deep interest in networking within the extensive cybersecurity domain. I had the opportunity to engage in a project where I conducted a comprehensive analysis of network traffic using Wireshark, specifically focusing on the identification of network packets.`
                  about.style.fontSize = '10px'
                  about.style.color = 'orange'
                  about.style.fontSize = '14px'
