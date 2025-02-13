@@ -19,8 +19,10 @@ export default function Display() {
         document.body.classList.toggle("dark-mode", !toggleLight)
         document.body.classList.toggle("turn-dark", !toggleLight)
 
-        // try it
-        // document.body.style.background = theme
+        // toggle for canvas
+        const canvas = document.querySelector("canvas")
+        canvas.classList.toggle("dark-mode", !toggleLight)
+        canvas.classList.toggle("turn-dark", !toggleLight)
     }, [toggleLight])
 
     // palette

@@ -41,23 +41,36 @@ export default function Interface(){
     
      
       <div className="container mobile">
-        <div className= {`nav-element  ${highlight === 'home' ? 'highlighted' : ""} `} onClick={() => showHighlighted('home')}><Link to="/"> <p><FontAwesomeIcon className="icons" icon={faHouse} color={highlight === 'home' ? "white" : theme}/></p></Link> </div> 
-        <div className= {`nav-element  ${highlight === 'about' ? 'highlighted' : ""} `} onClick={() => showHighlighted('about')} ><Link to="/about"> <p><FontAwesomeIcon className="icons" icon={faUser}  color={highlight === 'about' ? "white" : theme}/></p></Link> </div>
-        <div className= {`nav-element  ${highlight === 'projects' ? 'highlighted' : ""} `} onClick={() => showHighlighted('projects')} ><Link to="/projects"><p><FontAwesomeIcon className="icons" icon={faFolderOpen}  color={highlight === 'projects' ? "white" : theme}/></p></Link> </div>
-        <div className= {`nav-element  ${highlight === 'contact' ? 'highlighted' : ""} `} onClick={() => showHighlighted('contact')} ><Link to="/contact"><p><FontAwesomeIcon className="icons" icon={faEnvelope}  color={highlight === 'contact' ? "white" : theme}/></p></Link> </div>
-        <div className= {`nav-element  ${highlight === 'notes' ? 'highlighted' : ""} `} onClick={() => showHighlighted('notes')} ><Link to="/notes"><p><FontAwesomeIcon className="icons" icon={faFilePen}  color={highlight === 'notes' ? "white" : theme}/></p></Link> </div>
+        <div className= {`nav-element home ${highlight === 'home' ? 'highlighted' : ""} `} onClick={() => showHighlighted('home')}><Link to="/"> <p><FontAwesomeIcon className="icons" icon={faHouse} color={highlight === 'home' ? "white" : theme}/></p></Link>
+          <div style={{background: theme,color: theme ==="white" ? "black" :"white"}} className="home-que">Home</div>
+        </div> 
+        <div className= {`nav-element about ${highlight === 'about' ? 'highlighted' : ""} `} onClick={() => showHighlighted('about')} ><Link to="/about"> <p><FontAwesomeIcon className="icons" icon={faUser}  color={highlight === 'about' ? "white" : theme}/></p></Link>
+          <div style={{background: theme,color: theme ==="white" ? "black" :"white"}} className="about-que">About</div>
+        </div>
+        <div className= {`nav-element projects ${highlight === 'projects' ? 'highlighted' : ""} `} onClick={() => showHighlighted('projects')} ><Link to="/projects"><p><FontAwesomeIcon className="icons" icon={faFolderOpen}  color={highlight === 'projects' ? "white" : theme}/></p></Link>
+        <div style={{background: theme,color: theme ==="white" ? "black" :"white"}} className="project-que">projects</div>
+        </div>
+        <div className= {`nav-element contact ${highlight === 'contact' ? 'highlighted' : ""} `} onClick={() => showHighlighted('contact')} ><Link to="/contact"><p><FontAwesomeIcon className="icons" icon={faEnvelope}  color={highlight === 'contact' ? "white" : theme}/></p></Link>
+         <div style={{background: theme,color: theme ==="white" ? "black" :"white"}} className="contact-que">contact</div>
+        </div>
+        <div className= {`nav-element note ${highlight === 'notes' ? 'highlighted' : ""} `} onClick={() => showHighlighted('notes')} ><Link to="/notes"><p><FontAwesomeIcon className="icons" icon={faFilePen}  color={highlight === 'notes' ? "white" : theme}/></p></Link>
+         <div style={{background: theme,color: theme ==="white" ? "black" :"white"}} className="notes-que">Notes</div>
+        </div>
         
         <div
-          className={`nav-element ${highlight === 'toggle' ? 'highlighted' : ""}`}
+          className={`nav-element access ${highlight === 'toggle' ? 'highlighted' : ""}`}
           onClick={() => {
-            showHighlighted('toggle');
+            // showHighlighted('toggle');
             toggleAccessDisplay()
           }}
         >
+          <div style={{background: theme,color: theme ==="white" ? "black" :"white"}} className="function-que">Acessibility</div>
           <p>
             <FontAwesomeIcon
               className="icons"
               color={highlight === 'toggle' ? "white" : theme}
+            
+            
               icon={faExpand}
             />
           </p>

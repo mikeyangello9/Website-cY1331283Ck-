@@ -36,6 +36,7 @@ export default function Model(){
                     position: [ -12, 10, 0 ]
                 }}
                 style={{position:"fixed"}}
+                // className="dark-mode"
             >
             
             <EffectComposer>

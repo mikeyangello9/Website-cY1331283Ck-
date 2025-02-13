@@ -11,11 +11,12 @@ body
     color: black;
     user-select: none;
     font-family: 'Space Mono', monospace;
+    /* font-family: "Roboto", serif; */
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-     overflow-x: hidden;
-    cursor: cell;
+    overflow-x: hidden;
+    
 }
 
 .dark-mode{
@@ -89,7 +90,7 @@ body
    
     .container{
         position: fixed;
-        top: 70%;
+        top: 90%;
         left: 50%;
         display: flex;
         justify-content: space-around;
@@ -107,26 +108,52 @@ body
 
 
 .content{
-    z-index: 4;
-    color: rgb(0, 0, 0);
-    border-radius: 5px;
-    margin: 10px;
-    padding: 4rem;
-    background: rgba(255, 255, 255, 0);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(94, 94, 94, 0.3);
-    width: 20rem;
-    min-height: 30rem;
-    
+   
+    display: flex;
+    background: rgb(255, 255, 255, 0);
+    gap: 0;
+    width: 100%;
+    height: 500px;
+    border-radius: 10px;
 }
+
+
 .turn-dark {
     color: white;
 }
 
+.profile{
+    width: 500px;
+    height: 100px;
+    border: 1px solid wheat;
+}
 
+.detail{
+    color: black;
+    
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+  
+
+    /*glass*/
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 30px rgba(214, 211, 211, 0.05);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(233, 232, 231, 0.3);
+}
+
+ 
+@media(max-width: 412px) {
+    .detail{
+        border-top-left-radius:10px;       
+        border-top-right-radius:10px;
+        border-bottom-left-radius:0px;
+    }
+    
+}
 
 .project-panel {
     z-index: 0;
@@ -155,10 +182,7 @@ body
 }
 
 @media(max-width: 412px){
-    .content{
-        padding: 2rem;
-        font-size: .5rem;
-    }
+ 
     .project-panel{
         padding: .5rem;
         font-size: .5rem;
@@ -174,56 +198,96 @@ body
 
 
 .cv{
-    position: absolute;
-    background: orangered;
-    text-align: center;
-    padding: .5rem;
-    border-radius: 7px;
-    width: fit-content;
-    left: 40%;
+    height: 2rem;
+    border: none;
+    border-radius: 3px;
+}
+
+.resume{
+    display: grid;
+    place-items: center;
 }
 
 .cv > a{
     text-decoration: none;
-    color: white;
+    color: white;    
 }
 
-.skills{
-    display: flex;
-    justify-content: space-around;
-    gap: 2rem;
-    margin: 2rem;
-    width: 3rem;
+
+.aboutme{
+    padding: 1.5rem;
+    background: rgb(0, 0, 0, 0.2);
+
+    
+    box-shadow: 0 4px 30px rgba(214, 211, 211, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(233, 232, 231, 0.3);
 }
+.aboutme > p{
+    text-align: left;
+    font-size: 1rem;
+}
+
+.header{
+    font-size: 1rem;
+    text-decoration: underline;
+}
+.group{
+    display: block;
+    justify-content: space-around;
+    width: 25rem;
+    background: rgb(0, 0, 0, 0.2);
+    
+   
+    box-shadow: 0 4px 30px rgba(214, 211, 211, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(233, 232, 231, 0.3);
+
+    padding: 3rem;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
 
 
 .one{
-    background: rgba(231, 78, 7, 0.2);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(230, 100, 14, 0.3);
-    padding: 1rem;
-    width: 5rem;
-    font-size: .6rem;
+    font-size: .9rem;
     margin-top: 1rem;
-    text-align: center;
+    text-align: left;
+}
 
+@media(max-width:412px) {
+    .content{
+        
+        font-size: .5rem;
+        display: block;
+        width:100%;
+    }
+    .group{
+        padding: 1rem;
+        width: 300px;
+    }
+    .aboutme{
+        padding: 1rem;
+        width: 300px;
+        font-size: .5rem;
+    }
+    .aboutme > p{
+        font-size: .7rem;
+    }
+
+    .profile{
+        width: 300px;
+        
+    }
+    .one{
+        font-size: .7rem;
+    }
 }
 
 
-
-/**create mobile friendly navbar**/
-
-/* .projects{
-    color: rgb(255, 255, 255);
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-}
-
-/*projects*/
 .project{
     display: flex;
     font-size: 11px;
@@ -556,9 +620,9 @@ a > .link {
     }
 }
 .floating-nav{
-    position: absolute;
+    position: fixed;
     top: 68%;
-    left:14%;
+    left:12%;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(214, 211, 211, 0.1);
@@ -576,9 +640,9 @@ a > .link {
 
 @media(max-width: 412px){
     .floating-nav{
-        position: absolute;
-        top: 58%;
-        left:67%;
+        position: fixed;
+        top: 77%;
+        left:68%;
         background: rgba(255, 255, 255, 0.2);
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(214, 211, 211, 0.1);
@@ -660,7 +724,7 @@ a > .link {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(233, 232, 231, 0.3);
-    position: absolute;
+    position: fixed;
     left: 45%;
     top:70%;
     transform: translate(-50%, -50%);
@@ -669,9 +733,9 @@ a > .link {
 
 @media(max-width: 412px){
     .theme{
-        position: absolute;
+        position: fixed;
         left: 50%;
-        top:10%;
+        top:5%;
     }
 }
 
@@ -684,4 +748,79 @@ a > .link {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+}
+
+.function-que,.about-que, .home-que, .project-que, .contact-que, .notes-que{
+    position: absolute;
+    left: 120%;
+    background:red;
+    padding: .5rem;
+    border-radius: .6rem;
+    display: none;
+}
+
+.home-que{
+    top: 7%;
+}
+.about-que{
+    top: 23%;
+}
+.project-que{
+    top: 39%;
+}
+.contact-que{
+    top: 55%;
+}
+.notes-que{
+    top: 72%;
+}
+.function-que{
+    top: 87%;
+}
+
+.home:hover{
+    .home-que{
+        display: block;
+    }
+}
+.about:hover{
+    .about-que{
+        display: block;
+    }
+}
+.projects:hover{
+    .project-que{
+        display: block;
+    }
+}
+.contact:hover{
+    .contact-que{
+        display: block;
+    }
+}
+.note:hover{
+    .notes-que{
+        display: block;
+    }
+}
+.access:hover{
+    .function-que{
+        display: block;
+    }
+}
+
+@media(max-width : 412px) {
+
+
+    .function-que,.about-que, .home-que, .project-que, .contact-que, .notes-que{
+        /* display: flex; */
+        position: absolute;
+        left: 40%;
+        top:140%;
+        border-radius:.6rem;
+        font-size: .6rem;
+
+    }
+
+    
 }
