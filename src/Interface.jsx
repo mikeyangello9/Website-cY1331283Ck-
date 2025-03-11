@@ -50,9 +50,6 @@ export default function Interface(){
         <div className= {`nav-element projects ${highlight === 'projects' ? 'highlighted' : ""} `} onClick={() => showHighlighted('projects')} ><Link to="/projects"><p><FontAwesomeIcon className="icons" icon={faFolderOpen}  color={highlight === 'projects' ? "white" : theme}/></p></Link>
         <div style={{background: theme,color: theme ==="white" ? "black" :"white"}} className="project-que">projects</div>
         </div>
-        <div className= {`nav-element contact ${highlight === 'contact' ? 'highlighted' : ""} `} onClick={() => showHighlighted('contact')} ><Link to="/contact"><p><FontAwesomeIcon className="icons" icon={faEnvelope}  color={highlight === 'contact' ? "white" : theme}/></p></Link>
-         <div style={{background: theme,color: theme ==="white" ? "black" :"white"}} className="contact-que">contact</div>
-        </div>
         <div className= {`nav-element note ${highlight === 'notes' ? 'highlighted' : ""} `} onClick={() => showHighlighted('notes')} ><Link to="/notes"><p><FontAwesomeIcon className="icons" icon={faFilePen}  color={highlight === 'notes' ? "white" : theme}/></p></Link>
          <div style={{background: theme,color: theme ==="white" ? "black" :"white"}} className="notes-que">Notes</div>
         </div>

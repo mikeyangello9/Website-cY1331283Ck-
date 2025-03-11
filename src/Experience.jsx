@@ -7,7 +7,7 @@ import { Routes,Route } from 'react-router-dom'
 
 import About from './About'
 
-import Contact from "./Contact"
+
 import Home from './Home'
 
 import Projects from "./Projects"
@@ -245,7 +245,7 @@ export default function Experience()
                        
                     </Route>
 
-                    <Route path="/Contact" element={
+                    {/* <Route path="/Contact" element={
                         <Html
                             position={[2.23, 2, 6]}
                             transform rotateX={-0.25}
@@ -259,7 +259,7 @@ export default function Experience()
                             <div><Contact/></div>
                         
                         </Html>}>
-                    </Route>
+                    </Route> */}
 
                     {/* <Route path="/Notes" element={<Html><Notes/></Html>}></Route> */}
         </Routes>

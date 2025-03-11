@@ -12,16 +12,17 @@ export default function Notes(){
                 title={data.title}
                 topic={data.topic}
                 body={data.body}
+                
             
     />
 
    })
     return <>
     
-    <div className="notes">
-      <div className="note">{NotesElements}</div>
+    
+      <div className="writeup-notes">{NotesElements}</div>
       
-    </div>
+   
       
     </>
 }

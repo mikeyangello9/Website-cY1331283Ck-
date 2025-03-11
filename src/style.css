@@ -125,7 +125,10 @@ body
 .profile{
     width: 500px;
     height: 100px;
-    border: 1px solid wheat;
+    border: 1px dotted white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .detail{
@@ -176,25 +179,12 @@ body
 }
 
 .project-grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr ;
-
-}
-
-@media(max-width: 412px){
- 
-    .project-panel{
-        padding: .5rem;
-        font-size: .5rem;
-        width: 25rem;
-    }
-
-    .project-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-    }
+    display: block;
    
+
 }
+
+
 
 
 .cv{
@@ -223,6 +213,9 @@ body
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(233, 232, 231, 0.3);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
 }
 .aboutme > p{
     text-align: left;
@@ -237,27 +230,25 @@ body
     display: block;
     justify-content: space-around;
     width: 25rem;
-    background: rgb(0, 0, 0, 0.2);
-    
    
-    box-shadow: 0 4px 30px rgba(214, 211, 211, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(233, 232, 231, 0.3);
 
-    padding: 3rem;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    padding: 1rem;
+    border-radius: 10px;
+   
 }
 
 
 
 .one{
     font-size: .9rem;
-    margin-top: 1rem;
+    margin-top: .2rem;
     text-align: left;
 }
-
+.one:nth-child(1){
+    background: rgb(0, 26, 255);
+    width: fit-content;
+    font-weight: 1px;
+}
 @media(max-width:412px) {
     .content{
         
@@ -279,9 +270,15 @@ body
     }
 
     .profile{
-        width: 300px;
-        
+        width: 200px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+
+    
+ 
     .one{
         font-size: .7rem;
     }
@@ -294,7 +291,7 @@ body
     gap: .5rem;
     color: rgb(255, 255, 255);
     border-bottom: 1px solid orangered;
-} */
+} 
 
 .project-type{
     margin-top: 13px;
@@ -325,32 +322,51 @@ body
     z-index:5;
 }
 
+.programming-projects{
+    display: flex;
+    flex-direction: column; 
+    padding: 1rem;
+    overflow: hidden; 
+    height: auto;
+}
 
 .programming-project{
     padding: 1rem;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 3rem;
     border: 1px solid black;
     border-radius: 9px;
     margin: 1rem;
-    font-family: 'Montserrat' sans-serif;
-
-    /*test*/
-
-    background: rgba(255, 255, 255, 0);
-    border-radius: 16px;
+  
+    
+    /* Test styles */
+    background: rgba(94, 94, 94, 0.5);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    height:19rem;
+    
+    height: auto; /* Allows growth based on content */
+    min-height: 10rem; /* Ensures a minimum height */
+    position: relative; /* Prevents absolute children from breaking layout */
 
+    
+}
+.type{
+    width: 10rem;
+    height: 8rem;
+    border: 1px solid white;
+    padding: 1rem;
 }
 
 .details{
-    padding: .1rem ;
+    padding: 0.09rem ;
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    
 }
 
 .github-link{
@@ -370,10 +386,58 @@ body
     font-size: .8rem;
     
 }
+@media(max-width: 412px){
+ 
+    .project-panel{
+        padding: .5rem;
+        font-size: .5rem;
+        width: 25rem;
+    }
 
-a > .link {
-    position:absolute
+    .project-grid {
+        display: block;
+        
+    }
+    .type{
+        display: none;
+    }
+    .details{
+        display: block;
+        padding: 0;
+        width: 20rem;
+       
+    }
+    .github-link  {
+        position: relative;
+        display: flex;
+        justify-content: left;
+        
+    }
+   .github-link a > .link{
+        width: 7rem;
+        position: relative;
+   }
+    .programming-projects {
+        padding: 0.1rem; 
+    }
+
+    .programming-project {
+        flex-direction: column; 
+        align-items: center;
+        padding: 1rem;
+        width: 90%; 
+        min-height: auto; 
+        margin: 0;
+        background-color: red;
+    }
+
+    .github-link {
+        text-align: center;
+    }
 }
+/* a > .link {
+    position:absolute
+} */
 
 
 .floating-ui{
@@ -385,20 +449,26 @@ a > .link {
 .tools{
     list-style: none;
     display: flex;
-    justify-content: space-around;
-    gap: .5rem;
-    margin: 1rem;
+    justify-content:flex-start;
+    align-items: center;
+    padding: 0;
+    gap: .4rem;
+    
 }
 .tools > li{
     background: rgba(255, 255, 255, 0.2);
-    border-radius: 6px;
+    border-radius: 10px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 2px;
+    padding: 0px;
     font-size: 9px;
+    margin: 0;
+    width: 5rem;
+    text-align: center;
 }
+
 
 
 .description{
@@ -409,6 +479,7 @@ a > .link {
     color:orangered;
     font-size: 2rem;
     margin:5px;
+    margin-left: 0;
 }
 .github{
     font-size: 3rem;
@@ -416,10 +487,13 @@ a > .link {
 .contacts{
     list-style: none;
 }
-.notes{
-   
+.writeup-notes{
+    position: fixed; /* Keeps it in place */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers it */
     height: 600px;
-    width: 600px;
+    width: 800px;
 
     background: rgba(255, 255, 255, 0.2);
     border-radius: 6px;
@@ -428,23 +502,19 @@ a > .link {
     -webkit-backdrop-filter: blur(7px);
     border: none;
     padding: 4rem;
-    display: flex;
-    justify-content: center;
-    
-    
-    
-    
+   
 }
-
 @media(max-width: 412px) {
-    .notes {
-        width: 250px;
+    .writeup-notes {
         display: flex;
+        flex-direction: column;
+        align-items: center; /* centers the children horizontally */
+        gap: 1px; /* space between the cards */
+        padding: 40px;
+        width: 300px;
+        
     }
-    /* .note{
-        background-color:red;
-        width: 250px;
-    } */
+    
  
 }
 
@@ -482,7 +552,7 @@ a > .link {
     
     color:white; 
     font-style: normal;
-    font-weight: 100;
+    font-weight: 500;
     font-family: "Roboto", sans-serif;
     margin-left: 1rem;
     list-style: none; 
@@ -499,36 +569,39 @@ a > .link {
 
 
 .note-container{
-    position: absolute;
-    top:40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 255, 0, 0.2);
+    position: fixed; /* Keeps it fixed on the page */
+    top: 20px;
+    left: 20px;
+    width: 850px; /* Adjust as needed */
+    height: 80%; /* Adjust as needed */
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    overflow-y: auto; /* Makes the content scrollable */
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.7);
     border-radius: 6px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(7px);
     -webkit-backdrop-filter: blur(7px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    width: 600px;
-    height: 500px;
-    z-index: 600;
-    padding: 4rem;
 }
 
 .note-display {
     position: relative;
-    background:red;
     display: flex;
     justify-content: center;
-    
+   
 }
 
 .note-display > h2{
     color: white;
-}
+    margin-top: 0;
+} 
 
 .back-button {
     background: none;
+    position: sticky;
     border-radius:50%;
     height: 1.6rem;
     width: 1.6rem;
@@ -545,6 +618,9 @@ a > .link {
 
 .text-body{
     padding: 1rem;
+}
+.text-body > p{
+    padding: 0;
 }
 .note-icon{
     margin-top:2px;
@@ -578,14 +654,15 @@ a > .link {
 .notebook:hover{
     
     transform: translateX(-10px);
-    border: 1px solid #eb512e;
-    background: #eb512e;
+    border: 1px solid rgb(235, 81, 46, 0.4);
+    background: rgb(235, 81, 46, 0.4);
 
     outline-offset: 15px;
 
     .topic-tag{
-        color: rgb(0, 0, 0);
-        background: #dddbdb;
+        
+        background: white;
+        /* font-weight: 400; */
     }
     
 }
@@ -594,6 +671,9 @@ a > .link {
     .notebook{
         width: 350px;
         height: 100px;
+        
+        padding: 5px;
+        
     }
     .writeup{
         color:white;
@@ -606,6 +686,13 @@ a > .link {
     .note-icon{display: none;}
     .note-details{
         display: none;
+    }
+
+    .note-container{
+        width: 300px;
+        left: 0px;
+        padding: 40px;
+        
     }
 
 }
@@ -621,8 +708,8 @@ a > .link {
 }
 .floating-nav{
     position: fixed;
-    top: 68%;
-    left:12%;
+    top: 64%;
+    left: 13%;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(214, 211, 211, 0.1);
@@ -750,7 +837,7 @@ a > .link {
     border-radius: 50%;
 }
 
-.function-que,.about-que, .home-que, .project-que, .contact-que, .notes-que{
+.function-que,.about-que, .home-que, .project-que, .notes-que{
     position: absolute;
     left: 120%;
     background:red;
@@ -763,19 +850,17 @@ a > .link {
     top: 7%;
 }
 .about-que{
-    top: 23%;
+    top: 27%;
 }
 .project-que{
-    top: 39%;
+    top: 45%;
 }
-.contact-que{
-    top: 55%;
-}
+
 .notes-que{
-    top: 72%;
+    top: 65%;
 }
 .function-que{
-    top: 87%;
+    top: 85%;
 }
 
 .home:hover{
@@ -793,11 +878,7 @@ a > .link {
         display: block;
     }
 }
-.contact:hover{
-    .contact-que{
-        display: block;
-    }
-}
+
 .note:hover{
     .notes-que{
         display: block;
@@ -812,7 +893,7 @@ a > .link {
 @media(max-width : 412px) {
 
 
-    .function-que,.about-que, .home-que, .project-que, .contact-que, .notes-que{
+    .function-que,.about-que, .home-que, .project-que, .notes-que{
         /* display: flex; */
         position: absolute;
         left: 40%;
@@ -824,3 +905,5 @@ a > .link {
 
     
 }
+
+
