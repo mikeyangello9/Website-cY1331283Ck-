@@ -1,52 +1,87 @@
-import { OrbitControls, useHelper, useTexture, Html, Stage, AccumulativeShadows, Float, AsciiRenderer } from '@react-three/drei'
-import { useLoader } from '@react-three/fiber'
+import { OrbitControls, Html, Stage, BakeShadows } from '@react-three/drei'
+import { useFrame, useLoader, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
 import { Perf } from 'r3f-perf'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState, useMemo } from 'react'
 import { Routes,Route } from 'react-router-dom'
-
-import About from './About'
-
-
 import Home from './Home'
-
-import Projects from "./Projects"
-import Notes from "./Notes"
-
-
-import * as THREE from 'three'
-
-
+import { isMobile } from 'react-device-detect';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 
-console.log(useTexture)
+import { useTheme } from "./ThemeProvider"
+
 
 
 export default function Experience()
 {
 
-    const { x, y, z } = useControls({ // debugger
+    const {x, y, z, rotx, roty, rotz } = useControls({ // debugger
         x: 0,
-        y: 4.1,
-        z: 0
+        y: 0,
+        z: 0,
+        rotx: 0,
+        roty: 0,
+        rotz: 0
+    })
+    
+    const model = useMemo(() => useLoader(GLTFLoader, './revamp2grunge.glb'), []);
+    const children = useMemo(() => model.scene.children, [model]);
+    const directionalLightRef = useRef()
+    // useHelper(directionalLightRef, THREE.DirectionalLightHelper, 5)
+    
+    const { camera } = useThree()
+    const { theme } = useTheme()
+    const cursor = useRef({ posX: 0, posY: 0 });
+    const [isMobileDevice, setIsMobileDevice] = useState(isMobile)
+    // check if mobile    
+
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobileDevice(window.innerWidth < 765)
+        }
+
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
+
+   
+    useEffect(() => {
+        const handleMouseMove = (event) => {
+        cursor.current.posX = (event.clientX / window.innerWidth - 0.5) * 2;
+        cursor.current.posY = -(event.clientY / window.innerHeight - 0.5) * 2;
+        };
+        if (!isMobileDevice) {
+            window.addEventListener("mousemove", handleMouseMove);
+        } else{
+                window.removeEventListener("mousemove", handleMouseMove);
+                camera.position.z = 20
+        }
+        
+
+            
+       
+    }, [isMobileDevice]); // Runs only once
+    
+    useFrame(() => {
+        if(!isMobileDevice){
+            camera.position.x += (cursor.current.posX - camera.position.x) * 0.05;
+            camera.position.y += (cursor.current.posY - camera.position.y) * 0.05;
+            camera.position.z = 6; // Keep depth constant
+            camera.lookAt(0, 0, 0);
+        }
+        
     })
 
-    const model = useLoader(GLTFLoader, './revamp2grunge.glb')
     
-    console.log(model.scene.children)
-    const screen = model.scene.children[6].position
-    console.log(screen)
+    children.forEach((child) => {
+        child.castShadow = false;
+        child.receiveShadow = false;
+    })
 
-    const directionalLightRef = useRef()
-
-    useHelper(directionalLightRef, THREE.DirectionalLightHelper, 5)
-
-
-
-    const children = model.scene.children
-    children.map((child) => {
-        child.castShadow = true
-        child.receiveShadow = true
+    children.forEach((child) => {
+        child.frustumCulled = true;
     })
 
 
@@ -166,23 +201,29 @@ export default function Experience()
         reuse('keydown', '+', 27, 1.45)
         reuse('keyup', '+', 27, 1.51)
 
+
+        // toggle zoom inscreen
+        children
+
     }, [])
     
   
     return <>
+    
 
         <Perf position="bottom-left" />
 
-        <OrbitControls makeDefault enableZoom={false}/>
+        { isMobileDevice && <OrbitControls makeDefault enableZoom={false}/>}
 
-        <directionalLight  ref={ directionalLightRef } shadow-bias = {-0.003} shadow-normalBias = { 0.015 } castShadow position={ [ -17, 6.1, 3 ] } intensity={ 3 }/>
+        <directionalLight  ref={ directionalLightRef } shadow-bias = {-0.003} shadow-normalBias = { 0.015 } castShadow position={ [ -17, 6.1, 3 ] } intensity={ 3 } shadow-mapSize-width={512} shadow-mapSize-height={512} />
         
         <ambientLight intensity={ 1 } />
 
-      <Float>
+        <BakeShadows />
+   
         <Stage>
 
-            <primitive onclick= {console.log('clicked!')} object={ model.scene } scale={ [1.8,1.8,1.8] } rotation={[0, 4.7, 0]} position={[x, -1, 0]}>
+            <primitive object={ model.scene } scale={ [1.8,1.8,1.8] } rotation={[-0.06, roty, 0.02]} position={[0, -1, 0]}>
 
                 <Html 
                     position={[-0.6, 4.1, -1.088]}
@@ -194,78 +235,45 @@ export default function Experience()
                 >
                 <iframe className='frame' src="terminal.html" ></iframe>
                 </Html>
-                
 
-            </primitive>
-
-        </Stage>
-
-        <Routes>
-                    {/* <Route path="/About" element={
-                    <Html
-                        position={[0, 0, -1.088]}
-                        transform rotateX={-0.25}
-                        distanceFactor={4}
-                        wrapperClass='terminal'
-                        center>
-                        
-                        
-                    <div><About/></div>
-                    </Html>}></Route> */}
-
-                    {/* <Route path="/Projects" element={
-                    <Html
-                        position={[z, 0, 8]}
-                        transform rotateX={-0.25}
-                        rotation={[0, -2.30, 0]}
-                        distanceFactor={4}
-                        // wrapperClass='terminal'
-                        center>
-
-                    <div><Projects/></div>
-                    
-                    </Html>}>
-                    </Route> */}
+                <Routes>
 
                     <Route path='/' element={
                         <Html
-                        position={[2.23, 2, 6]}
+                        position={[3.5, 4.1, -1.088]}
                         transform rotateX={-0.25}
-                        rotation={[0,-1.6,0]}
                         distanceFactor={4}
-                        // wrapperClass='terminal'
                         center
-                    
+                        scale={[0.8,0.8,0.8]}
                     >
                         
-                        <div><Home/></div>
+                        <div><Home theme={theme}/></div>
                     
                     </Html>}>
 
                        
                     </Route>
 
-                    {/* <Route path="/Contact" element={
-                        <Html
-                            position={[2.23, 2, 6]}
-                            transform rotateX={-0.25}
-                            rotation={[0,-1.6,0]}
-                            distanceFactor={4}
-                            // wrapperClass='terminal'
-                            center
-                        
-                        >
-                            
-                            <div><Contact/></div>
-                        
-                        </Html>}>
-                    </Route> */}
-
-                    {/* <Route path="/Notes" element={<Html><Notes/></Html>}></Route> */}
+                    
         </Routes>
+                
+
+            </primitive>
+
+        </Stage>
+
+        
+
+        {/* <Html 
+            position={[2.23, 6, 0]}
+            transform rotateX={-0.25}
+            rotation={[0,-1.6,0]}
+            distanceFactor={4}>
+            <button  style={{fontSize:"100px"}}>zoom</button>
+        </Html> */}
 
 
-      </Float>
+      
 
                 
       
@@ -273,4 +281,3 @@ export default function Experience()
 
     </>
 }
-//style={{width: "50vw", height: "50vh", translate: "50%"}}

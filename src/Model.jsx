@@ -39,9 +39,9 @@ export default function Model(){
                 // className="dark-mode"
             >
             
-            <EffectComposer>
-                <ChromaticAberration offset={[offset.offset_x, offset.offset_y]}/>
-            </EffectComposer>
+            {/* <EffectComposer> */}
+                {/* <ChromaticAberration offset={[offset.offset_x, offset.offset_y]}/> */}
+            {/* </EffectComposer> */}
             
         
                 <Experience />

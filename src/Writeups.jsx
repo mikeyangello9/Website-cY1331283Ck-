@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
-import { faBackspace, faBackward, faBook, faLessThan, faTentArrowTurnLeft } from "@fortawesome/free-solid-svg-icons"
+import { faBackspace, faBackward, faBook, faCopy, faLessThan, faTentArrowTurnLeft } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useTheme } from "./ThemeProvider"
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from "remark-gfm"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { atomOneDark, dracula } from "react-syntax-highlighter/dist/esm/styles/hljs"
+
 
 
 export default function (props) {
@@ -44,6 +45,7 @@ export default function (props) {
     const customStyle = {
         background: theme, 
         color: theme === "aqua" ? "black" : theme === "white" ? "black" : "white", 
+        // color: "red",
         padding: "1rem", 
         borderRadius: "8px",
         fontSize: ".6rem", 
@@ -63,7 +65,7 @@ export default function (props) {
 
                 <div className="topics">{topic}</div>
 
-                <div className="text-body markdown-body">
+                <div className="text-body markdown-body" style={{color: "white"}}>
                     <ReactMarkdown
                         children={markdown}
                         remarkPlugins={[remarkGfm]}
@@ -73,15 +75,31 @@ export default function (props) {
                             },
                             code({ node, inline, className, children, ...props }) {
                                 const match = /language-(\w+)/.exec(className || "");
+                                const codeContent = String(children).replace(/\n$/, "");
+
+                                const handleCopy= () => {
+                                    navigator.clipboard.writeText(codeContent)
+                                        .then(() => {
+                                            console.log("Code copied to clipboard");
+                                        })
+                                        .catch((err) => {
+                                            console.error("Error copying code: ", err);
+                                        });
+                                };
                                 return !inline && match ? (
-                                    <SyntaxHighlighter 
-                                        style={atomOneDark} 
-                                        language={match[1]} 
-                                        PreTag="div" 
-                                        customStyle={customStyle}
-                                        {...props}>
-                                        {String(children).replace(/\n$/, "")}
-                                    </SyntaxHighlighter>
+                                    <div style={{ position: "relative" }}>
+                                        <button className="copy-button" onClick={handleCopy} style={{ position: "absolute", top: "5px", right: "5px", background: theme, color: theme === "white" ? "black" : "white", borderRadius: "4px", padding: "2px 4px", fontSize: ".6rem" }}>
+                                            <FontAwesomeIcon icon={faCopy} size="2x" />
+                                        </button>
+                                        <SyntaxHighlighter 
+                                            style={atomOneDark} 
+                                            language={match[1]} 
+                                            PreTag="div" 
+                                            customStyle={customStyle}
+                                            {...props}>
+                                            {String(children).replace(/\n$/, "")}
+                                        </SyntaxHighlighter>
+                                    </div>
                                 ) : (
                                     <code className={className} {...props}>
                                         {children}

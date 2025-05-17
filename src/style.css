@@ -45,14 +45,14 @@ body
     padding: 0.5rem;
     border-radius: 4rem;
     font-size: .5rem;
-    border: .1px solid black;
+    /* border: .1px solid black; */
     width: auto;
     z-index: 10;
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 30px rgba(214, 211, 211, 0.05);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* border: 1px solid rgba(233, 232, 231, 0.3); */
 } 
 
 .container > div{
@@ -122,18 +122,21 @@ body
     color: white;
 }
 
-.profile{
-    width: 500px;
-    height: 100px;
-    border: 1px dotted white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+
+@media(max-width: 412px){
+    .profile{
+        width: 200px;
+        height: 200px;
+        display: grid;
+        grid-template-columns: repeat(16, 20px);
+        grid-template-rows: repeat(8, 20px);
+        gap: 1px;
+    }
 }
 
 .detail{
     color: black;
-    
     padding: 10px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -269,13 +272,7 @@ body
         font-size: .7rem;
     }
 
-    .profile{
-        width: 200px;
-        height: 200px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+    
 
     
  
@@ -375,8 +372,6 @@ body
     align-items: center;
 }
 .link{
-    background: orangered;
-    
     color: white;
     border: none;
     border-radius: 7px;
@@ -487,6 +482,11 @@ body
 .contacts{
     list-style: none;
 }
+
+.contacts > li{
+    margin-top: 5px;
+    border-radius: 5px;
+}
 .writeup-notes{
     position: fixed; /* Keeps it in place */
     top: 50%;
@@ -495,12 +495,11 @@ body
     height: 600px;
     width: 800px;
 
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 6px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
-    border: none;
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 30px rgba(214, 211, 211, 0.05);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(233, 232, 231, 0.3);
     padding: 4rem;
    
 }
@@ -576,7 +575,7 @@ body
     height: 80%; /* Adjust as needed */
     padding: 20px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 999;
+    z-index: 999; /* Ensure it is below the .back-button */
     overflow-y: auto; /* Makes the content scrollable */
     border-radius: 8px;
     background: rgba(0, 0, 0, 0.7);
@@ -601,8 +600,11 @@ body
 
 .back-button {
     background: none;
-    position: sticky;
-    border-radius:50%;
+    position: sticky; 
+    top: 10px; /* Remove quotes */
+    left: 10px; /* Remove quotes */
+    z-index: 1001; /* Ensure it is above the .note-container */
+    border-radius: 9px;
     height: 1.6rem;
     width: 1.6rem;
     margin: 1rem;
@@ -644,11 +646,13 @@ body
 
     border-radius: 5px;
    
-   display: flex;
+    display: flex;
     padding: 2px;
     gap: 1rem;
-    width: 600px;
+    width: 800px;
     height: 30px;
+
+    
     
 }
 .notebook:hover{
@@ -745,7 +749,16 @@ body
 }
 
 
-
+.copy-button{
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin-left: 1rem;
+}
 
 
 

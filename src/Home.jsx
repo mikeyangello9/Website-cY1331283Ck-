@@ -2,8 +2,9 @@ import { faA, faMoon, faPalette, faSun, faUniversalAccess } from "@fortawesome/f
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useEffect, useState } from "react"
 import Palette from "./Palette"
+import { useTheme } from "./ThemeProvider"
 
-export default function Home() {
+export default function Home({ theme }) {
 
     // const [toggleLight, setToggleLight] = useState(false)
     // const [togglePalette, setTogglePalette] = useState(false)
@@ -46,12 +47,13 @@ export default function Home() {
           
     //     {togglePalette && <Palette />}
     // </>
+    
 
     return <> 
     <ul className="contacts">
-        <li><a target="_blank" className="link github" href="https://github.com/mikeyangello9">GITHUB</a></li>
-        <li><a className="link github" href="https://github.com/mikeyangello9">EMAIL</a></li>
-        <li><a className="link github" href="https://www.linkedin.com/in/aiwekhoe-michael-a37150268/">LINKEDIN</a></li>
+        <li style={{background: theme}}><a style={{ color: theme === "aqua" ? "black" : theme === "white" ? "black" : "white", }} target="_blank" className="link github" href="https://github.com/mikeyangello9">GITHUB</a></li>
+        <li style={{background: theme}}><a style={{ color: theme === "aqua" ? "black" : theme === "white" ? "black" : "white", }} className="link github" href="https://github.com/mikeyangello9">EMAIL</a></li>
+        <li style={{background: theme}}><a style={{ color: theme === "aqua" ? "black" : theme === "white" ? "black" : "white", }} className="link github" href="https://www.linkedin.com/in/aiwekhoe-michael-a37150268/">LINKEDIN</a></li>
     </ul>
      
     </>
