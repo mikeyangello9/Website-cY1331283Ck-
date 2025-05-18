@@ -1,5 +1,5 @@
 *{
-    background-color: #1e1e1e;
+    background-color: transparent;
     color: white;
     font-family: 'Courier New', monospace;
     /* font-family: 'JetBrains Mono', monospace; */
@@ -19,6 +19,7 @@
 .cycle{
   
     font-size: 1rem;
+    background-color: transparent;
   }
   
   .blue{
@@ -30,13 +31,14 @@
   .instruction{
     list-style: none;
     padding: 1rem;
+    background-color: transparent;
   }
   
   
   .top-level > *{
     color: white;
     font-size: 10px;
-    border: 1px solid
+    
   }
   
   .intro{
@@ -51,6 +53,7 @@
     display:flex;
     justify-content: center;
     font-size: 1rem;
+    background-color: transparent;
   }
   
   .date{
@@ -62,18 +65,18 @@
   }
 
   .container{
-    background: #ff6363;
+    background: transparent;
   }
 
   .visual{
     display: flex;
-    
+    background: transparent;
   }
 
   .blinker{
     width: .5rem;
     height: 2rem;
-    border: 1px solid beige;
+    
   }
 
   .terminal-input{
@@ -99,25 +102,23 @@
     background-color: transparent;
   }
 
-.container, .top-level{
+html{
   background: linear-gradient(to top, #000000,#000000, #333333, #333333);
   background-size: cover;
-  background-size: 100% 2px;
+  background-size: 100% 1px;
   
  
 
 /* retro stuff */
   color: #00ff00;
   font-family: "Courier New", monospace;
-  
- 
   text-shadow: 0 0 10px #00ff00;
   filter: blur(.5px);
 }
 
 
 @media screen{
-  .container {
+  html {
     animation: scanlines infinite 55s linear ;
   }
 } 
