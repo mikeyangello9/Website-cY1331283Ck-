@@ -152,6 +152,8 @@ const terminal = () => {
             let contents;
 
             inputArray.map((input) => {
+                let handled = false;
+
                 if (input.value === "navigate") {
                     input.value = ""; // clear after
                     console.log("checked"); // check
@@ -185,6 +187,7 @@ const terminal = () => {
                     contents.style.listStyle = 'none';
 
                     container.append(contents);
+                    handled = true;
                 } else if (input.value === `display ${commandList[0]}` && container.querySelector('ul') !== null) {
                     input.value = "";
                     console.log('right away!');
@@ -196,6 +199,7 @@ const terminal = () => {
                     about.style.fontSize = '14px';
                     about.style.padding = '10px';
                     container.append(about);
+                    handled = true;
                 } else if (input.value === `display ${commandList[1]}` && container.querySelector('ul') !== null) {
                     input.value = '';
 
@@ -281,23 +285,28 @@ const terminal = () => {
                     projects.append(tcpSkills);
 
                     container.append(projects);
+                    handled = true;
                 } 
                 else if (input.value === `display ${commandList[2]}` && container.querySelector('ul') !== null) {
                     inNotesDirectory = true;
                     notesTitleArray.length = 0;
                     const terminalNotes = document.createElement("div");
+                    terminalNotes.style.background = "none"; // Remove background color
+                    terminalNotes.style.backgroundColor = "transparent"; // Remove background color
 
-                    NotesData.map((notes) => {
+                    NotesData.forEach((notes) => {
                         notesTitleArray.push(notes.title);
                         const titleDiv = document.createElement("div");
-                        titleDiv.textContent = `| ${notes.body}`;
+                        titleDiv.textContent = notes.body; // Show note.body only
                         titleDiv.style.color = "white";
+                        titleDiv.style.background = "none";
                         titleDiv.style.backgroundColor = "transparent";
                         terminalNotes.append(titleDiv);
                     });
 
                     container.append(terminalNotes);
                     input.value = "";
+                    handled = true;
                 } 
                 else if (inNotesDirectory && input.value.startsWith("open ")) {
                     const noteBody = input.value.slice(5).trim();
@@ -326,13 +335,35 @@ const terminal = () => {
                                 console.log(notePath)
                             })
                     } else {
-                        console.log("Note not found!")
+                        // Display error message in the terminal (no background)
+                        const errorDiv = document.createElement("div");
+                        errorDiv.textContent = "Note not found!";
+                        errorDiv.style.color = "red";
+                        errorDiv.style.fontWeight = "bold";
+                        errorDiv.style.padding = "8px 0";
+                        errorDiv.style.background = "none";
+                        errorDiv.style.backgroundColor = "transparent";
+                        container.append(errorDiv);
+                        console.log("Note not found!");
                     }
                     input.value = "";
-                }
+                    handled = true;
+                } 
                 else if (input.value === "clear") {
                     input.value = "";
                     container.innerHTML = "";
+                    handled = true;
+                }
+
+                // Only display error if none of the above matched
+                if (!handled && input.value.trim() !== "") {
+                    const errorDiv = document.createElement("div");
+                    errorDiv.textContent = "Error: Unknown command!";
+                    errorDiv.style.color = "red";
+                    errorDiv.style.fontWeight = "bold";
+                    errorDiv.style.padding = "8px 0";
+                    container.append(errorDiv);
+                    input.value = "";
                 }
 
                 const containerChildren = container.children;
