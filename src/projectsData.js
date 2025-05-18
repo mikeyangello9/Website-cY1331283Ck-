@@ -19,27 +19,6 @@ export default [
         description: "This setup allows me to simulate various network environments and practice offensive security techniques in a controlled and isolated environment.",
         link: "",
         technology : ["Virtual box","NAT network", "Kali linux"]
-    },
-    {
-        id:4,
-        name: "Web Server Co",
-        description: "I set up and configured both IIS and Apache web servers, enabling directory indexing and port indexing",
-        link: "",
-        technology :  ["IIS","MS server 2016", "VMWARE"]
-    },
-    {
-        id:5,
-        name: "Web Server Co",
-        description: "I set up and configured both IIS and Apache web servers, enabling directory indexing and port indexing",
-        link: "",
-        technology :  ["IIS","MS server 2016", "VMWARE"]
-    },
-    {
-        id:6,
-        name: "Web Server Co",
-        description: "I set up and configured both IIS and Apache web servers, enabling directory indexing and port indexing",
-        link: "",
-        technology :  ["IIS","MS server 2016", "VMWARE"]
-    },
+    }
     
 ]
