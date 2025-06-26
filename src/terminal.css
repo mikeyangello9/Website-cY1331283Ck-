@@ -1,96 +1,56 @@
 *{
-    background-color: transparent;
+    /* background-color: #002b36; */
     color: white;
     font-family: 'Courier New', monospace;
     /* font-family: 'JetBrains Mono', monospace; */
     
     /* user-select: none; */
   
-    overflow-x: hidden;
-    scrollbar-width:thin;
-    scrollbar-color: rgb(0, 0, 0) rgb(255, 81, 0) ;
+    overflow-x: hidden; 
+    margin: 0;
 
     
   }
 
+  *::-webkit-scrollbar {
+  width: 7px;
+  
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(248, 51, 2, 0.05);
+  backdrop-filter: blur(4px);
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(238, 82, 10, 0.4);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
  
-
-  
-.cycle{
-  
-    font-size: 1rem;
-    background-color: transparent;
-  }
-  
-  .blue{
-    color: rgb(0, 0, 0);
-    background: #ff7b00;
-    font-size: 1rem;
-  }
-  
-  .instruction{
-    list-style: none;
-    padding: 1rem;
-    background-color: transparent;
-  }
-  
-  
-  .top-level > *{
-    color: white;
-    font-size: 10px;
-    
-  }
-  
-  .intro{
-    font-size: 25px;
-    display: flex;
-    justify-content: center;
-    background: greenyellow;
-    color: white;
-  }
-  
-  .how{
-    display:flex;
-    justify-content: center;
-    font-size: 1rem;
-    background-color: transparent;
-  }
-  
-  .date{
-    font-family: 'Rubik Mono One', monospace;
-    display: flex;
-    justify-content: center;
-    font-family: 'Rubik Mono One', monospace;
-    font-size: small;
-  }
-
   .container{
     background: transparent;
   }
 
-  .visual{
-    display: flex;
-    background: transparent;
-  }
 
-  .blinker{
-    width: .5rem;
-    height: 2rem;
-    
-  }
 
   .terminal-input{
-    color: orangered;
+    /* color: orangered; */
+    width: 150px;
   }
 
   .terminal-label{
-    color: orange;
-    border: 1px solid wheat;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   .wrapper{
     background: none;
     background-color: transparent;
+    margin-top: 0;
+    justify-content: space-between;
   }
 
   .about{
@@ -137,7 +97,7 @@ html{
 .rendered-notes *{
   background: none !important;
   background-color: transparent !important;
-  font-size: 0.85rem;
+  font-size: 9px;
 
 }
 
@@ -148,4 +108,20 @@ html{
   max-width: 90vw;
   width: 100%;
   height: auto;
+}
+
+.neo{
+  display: flex;
+  justify-content: space-around;
+}
+
+.ascii-half{
+  border: 1px dashed;
+  width: 50%;
+  height: 10rem;
+  overflow: hidden;
+}
+
+.error-div{
+  font-size: 9px;
 }

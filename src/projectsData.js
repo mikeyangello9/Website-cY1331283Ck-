@@ -15,10 +15,10 @@ export default [
     },
     {
         id:3,
-        name: "Homelab",
-        description: "This setup allows me to simulate various network environments and practice offensive security techniques in a controlled and isolated environment.",
-        link: "",
-        technology : ["Virtual box","NAT network", "Kali linux"]
+        name: "Physical IDS Webstream",
+        description: "This artefact is a lightweight, real-time intrusion detection system built using Python and custom-trained YOLOv5/YOLOv8 models. It identifies physical intrusions such as fighting and vandalism in video streams and images.",
+        link: "https://github.com/mikeyangello9/detect_server_fyp",
+        technology : ["Flask","CNN", "Raspberry PI"]
     }
     
 ]

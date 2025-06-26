@@ -1,17 +1,14 @@
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useState } from "react"
 import { Link } from "react-router-dom"
-import { faEnvelope, faFilePen, faFolderOpen, faHouse, faUser, faMoon, faPalette, faSun, faExpand } from "@fortawesome/free-solid-svg-icons"
+import { faFilePen, faFolderOpen, faHouse, faUser, faExpand } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useTheme } from "./ThemeProvider"
 
 
-import About from './About'
+
 
 import Display from "./Display"
 
-import Projects from "./Projects"
-import Notes from "./Notes"
-import { Route, Routes } from "react-router-dom"
 
 // functionality imperative
 
@@ -38,6 +35,7 @@ export default function Interface(){
     return <>
     
     
+      
     
      
       <div className="container mobile">
@@ -77,15 +75,9 @@ export default function Interface(){
        
 
       </div>
-      {toggleDisplay && <Display />}
 
-      <Routes>
-          {/* <Route path="/" element={<div className="ui"><Home/></div>}></Route> */}
-          <Route path="/About" element={<div className="ui"><About/></div>}></Route>
-          <Route path="/Projects" element={<div className="ui"><Projects/></div>}></Route>
-          {/* <Route path="/Contact" element={<div className="ui"><Contact/></div>}></Route>*/}
-          <Route path="/Notes" element={<div className="ui"><Notes/></div>}></Route> 
-      </Routes>
+      
+      {toggleDisplay && <Display />}
 
       
    

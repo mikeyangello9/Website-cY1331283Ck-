@@ -55,10 +55,7 @@ export default function Display() {
                 <div className="light-que">toggle</div>
             </div>
             
-            <div className="floater accessibility">
-                <FontAwesomeIcon color={theme} icon={faUniversalAccess}/>
-                <div className="access-que">Accessibility</div>
-            </div>
+
         </div>
             
         {isVisible && (<Palette

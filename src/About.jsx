@@ -10,11 +10,9 @@ export default function About(){
     return <>
         <div  className="content turn-dark">
 
-
-            
                 
             <div className="detail">
-                <p>michael</p>
+                <p>Hey, I'm Micheal</p>
                 <div className="profile">
                 <pre className="ascii-art"  style={{color:theme}}>
                 {`
@@ -44,25 +42,14 @@ export default function About(){
 
 
             <div className="aboutme">
-                <p>I am an enthusiastic student with a deep interest in networking within the extensive cybersecurity domain. 
-                    I had the opportunity to engage in a project where I conducted a comprehensive analysis of network traffic using Wireshark, specifically focusing on the identification of network packets.</p>
+                <p>I'm a University of Portsmouth final-year BSc Cyber Security and Forensic Computing student with practical experience in malware analysis, system hardening, and team security competitions. To hone my technical abilities, I've created intrusion detection systems, taken part in national CTFs, and established a personal penetration testing lab. I'm currently looking for a graduate position in software or cyber security where I can put my skills to use, develop with a big team, and help safeguard digital infrastructure.</p>
                 <div className="resume">
                     <button style={{background:theme}} className="cv">
                             <a style={{color: theme ==="white" ? "black" :"white"}} href="">RESUME</a>
                     </button>
                 </div>
 
-                
-                <div className="group">
-                    <div className="one">SKILLS</div>
-                    <div className="one">JavaScript</div>
-                    <div className="one">Python</div>
-                    <div className="one">WireShark</div>
-                    <div className="one">Git</div>
-                    <div className="one">Virtualisation</div>
-                    <div className="one">Bash</div>
-                    <div className="one">C</div>
-                </div>
+               
 
             </div>
             

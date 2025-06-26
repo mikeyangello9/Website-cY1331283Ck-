@@ -29,15 +29,16 @@ export default function Palette({ isToggled,onClose }) {
     const colours = [
         "blue",
         "red",
-        "green",
+        "OrangeRed",
+        "DeepPink",
         "orangered",
-        "aqua",
-        "purple",
-        "pink",
+        "wheat",
+        "coral",
+        "BlueViolet",
         "limeGreen",
-        "DarkBlue",
-        "black",
-        "white"
+        "DarkOrange",
+        "cadetBlue",
+        
     ]
  
     return <>

@@ -2,10 +2,9 @@ import { marked } from "marked";
 import NotesData from "./NotesData.js";
 
 const terminal = () => {
-    const cycle = document.querySelector('.cycle');
-    const header = document.querySelector('.intro');
-    const blinkers = document.querySelectorAll('.blinker');
-    const visualDiv = document.querySelector('.visual');
+    
+    const asciiFetch = document.querySelector(".fetch-ascii")
+    
 
     const randomiseColor = (element) => {
         setInterval(() => {
@@ -18,43 +17,17 @@ const terminal = () => {
         }, 1000);
     };
 
-    randomiseColor(header);
+    
 
-    const date = document.querySelector('.date');
-    let birthday = new Date();
-    const hours = birthday.getHours();
-    const minutes = birthday.getMinutes();
-    let seconds = 0;
+ 
 
-    setInterval(() => {
-        seconds = birthday.getSeconds();
-    }, 2000);
+    // date.innerText = `${year} ${month + 1} ${todayDate} ${hours}, ${minutes} ${seconds}`;
+    // date.dataset.value = `${year} ${month + 1} ${todayDate} ${hours}, ${minutes} ${seconds}`;
+    // randomiseColor(date);
 
-    const todayDate = birthday.getDate();
-    const month = birthday.getMonth();
-    const year = birthday.getFullYear();
+  
 
-    date.innerText = `${year} ${month + 1} ${todayDate} ${hours}, ${minutes} ${seconds}`;
-    date.dataset.value = `${year} ${month + 1} ${todayDate} ${hours}, ${minutes} ${seconds}`;
-    randomiseColor(date);
-
-    blinkers.forEach((blinker) => {
-        randomiseColor(blinker);
-    });
-
-    let count = 0;
-
-    const loading = setInterval(() => {
-        const loadbars = document.createElement('div');
-        loadbars.classList.add('blinker');
-        for (let i = 0; i < 10; i++) {
-            visualDiv.appendChild(loadbars);
-            count++;
-        }
-        if (count == 100) {
-            clearInterval(loading);
-        }
-    }, 1000);
+ 
 
     const hackerize = (element) => {
         const alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890';
@@ -79,22 +52,19 @@ const terminal = () => {
             }, 30);
         });
     };
-
-    hackerize(cycle);
-    hackerize(header);
-    hackerize(date);
-
+    // hackerize(asciiFetch)
+  
     /// terminal code
     let container = document.querySelector(".container");
     container.style.display = "flex";
-    container.style.border = "1px solid white";
+    
     container.style.flexDirection = "column";
-    container.style.padding = '1rem';
-    container.style.backgroundColor = ' #2d2d2d';
+    container.style.padding = '1px';
+    
     container.style.borderRadius = '7px';
-    container.style.fontSize = '1rem';
+    container.style.fontSize = '9px';
 
-    const asciiArt = ".,.,\______/;.;.;.";
+
 
     const inputArray = [];
     const notesTitleArray = [];
@@ -106,22 +76,28 @@ const terminal = () => {
             const input = document.createElement("input");
             input.classList.add('terminal-input');
             input.classList.add('field');
-            input.style.fontSize = '13px';
+            input.style.fontSize = '9px';
+            input.style.border = 'none';
 
             const label = document.createElement("label");
             label.classList.add('terminal-label');
-            label.innerText = "user@>:";
-            label.style.fontSize = '13px';
+            label.textContent = "user@terminal$~:";
+            label.style.fontSize = '9px';
+            label.style.marginRight = "0";
+
             input.type = "text";
 
             label.style.display = "block";
+           
+
 
             wrapper.style.display = "flex";
+            wrapper.style.justifyContent = "space-between";
+            wrapper.style.gap = "10px";
             wrapper.style.alignItems = "center";
-            wrapper.style.marginBottom = "5px";
-
-            input.style.marginRight = "10px";
-            input.style.border = "none";
+            // 
+            
+            input.style.marginleft= "10px";
             input.style.display = "block";
 
             input.addEventListener("focus", () => {
@@ -129,7 +105,7 @@ const terminal = () => {
                 input.style.outline = "none";
             });
 
-            label.style.background = '#2d2d2d';
+            
             input.style.background = 'none';
 
             wrapper.append(label);
@@ -162,19 +138,19 @@ const terminal = () => {
                     contents.classList.add('contents');
 
                     const about = document.createElement('li');
-                    about.innerText = '<< ABOUT >>';
+                    about.innerText = '/ABOUT';
                     about.style.color = 'aqua';
                     about.style.background = 'none';
                     about.backgroundColor = "transparent"
 
                     const projects = document.createElement('li');
-                    projects.innerText = '<< PROJECTS >>';
+                    projects.innerText = '/PROJECTS';
                     projects.style.color = 'aqua';
                     projects.style.background = 'none';
                     about.backgroundColor = "transparent"
 
                     const Notes = document.createElement('li');
-                    Notes.innerText = '<< NOTES >>';
+                    Notes.innerText = '/NOTES';
                     Notes.style.color = 'aqua';
                     Notes.style.background = 'none';
                     about.backgroundColor = "transparent"
@@ -183,20 +159,20 @@ const terminal = () => {
                     contents.append(projects);
                     contents.append(Notes);
 
-                    contents.style.display = 'inline';
+                    contents.style.display = 'flex';
+                    contents.style.justifyContent = 'space-around';
                     contents.style.listStyle = 'none';
 
                     container.append(contents);
                     handled = true;
                 } else if (input.value === `display ${commandList[0]}` && container.querySelector('ul') !== null) {
                     input.value = "";
-                    console.log('right away!');
+                    
                     // about section
                     const about = document.createElement('p');
-                    about.innerText = `${asciiArt}\n I am an enthusiastic student with a deep interest in networking within the extensive cybersecurity domain. I had the opportunity to engage in a project where I conducted a comprehensive analysis of network traffic using Wireshark, specifically focusing on the identification of network packets.`;
-                    about.style.fontSize = '10px';
+                    about.innerText = `I'm a University of Portsmouth final-year BSc Cyber Security and Forensic Computing student with practical experience in malware analysis, system hardening, and team security competitions. To hone my technical abilities, I've created intrusion detection systems, taken part in national CTFs, and established a personal penetration testing lab. I'm currently looking for a graduate position in software or cyber security where I can put my skills to use, develop with a big team, and help safeguard digital infrastructure.`;
+                    about.style.fontSize = '9px';
                     about.style.color = 'orange';
-                    about.style.fontSize = '14px';
                     about.style.padding = '10px';
                     container.append(about);
                     handled = true;
@@ -222,13 +198,13 @@ const terminal = () => {
                     skillsUsed.innerText = '<<< Skills Used >>>';
                     skillsUsed.style.display = 'flex';
                     skillsUsed.style.justifyContent = 'center';
-                    skillsUsed.style.fontSize = '10px';
+                    skillsUsed.style.fontSize = '9px';
 
                     const skillsUsed1 = document.createElement('h1');
                     skillsUsed1.innerText = '<<< Skills Used >>>';
                     skillsUsed1.style.display = 'flex';
                     skillsUsed1.style.justifyContent = 'center';
-                    skillsUsed1.style.fontSize = '10px';
+                    skillsUsed1.style.fontSize = '9px';
 
                     // skills
                     const skills = document.createElement('ul');
@@ -248,7 +224,7 @@ const terminal = () => {
                     const pixlib = document.createElement('div');
                     pixlib.innerText = "Pixlib - convert images to pixels and enable physics to have mouse interactions, create multiple instances and position using traditional CSS. init() --> this method takes in the canvas context as an argument, loops through the width(rows) and the height(column) of the image, getting the color data(RGBA) and instantiates a particle class if the alpha value in the data is more than one. drawEffect() --> this method takes all of the particle class instances in the particleArray property and draws using the draw() method from the Particle class, sets the fill style for each particle to the the RGBA values gotten from analysing the image data using the built-in html canvas method, getImageData().update() --> this.dx = this.effect.mouse.x - this.x // the difference between the mousex pos and the particle x pos this.dy = this.effect.mouse.y - this.y // the difference between the mousey pos and the particle y-pos, Here's the github link ";
 
-                    pixlib.style.fontSize = '10px';
+                    pixlib.style.fontSize = '9px';
                     pixlib.style.color = 'orange';
                     pixlib.style.border = '1px solid';
                     pixlib.style.padding = '10px';
@@ -257,7 +233,7 @@ const terminal = () => {
                     const tcpchat = document.createElement('div');
                     tcpchat.innerText = 'tcp chat - This is a very small chat application that involves a small-scale peer-to-peer node on a  LAN(client and server connected on a local network). This was done using the Python sockets library.';
 
-                    tcpchat.style.fontSize = '10px';
+                    tcpchat.style.fontSize = '9px';
                     tcpchat.style.color = 'orange';
                     tcpchat.style.border = '1px solid';
                     tcpchat.style.padding = '10px';
@@ -355,9 +331,31 @@ const terminal = () => {
                     handled = true;
                 }
 
+                // help
+
+                else if (input.value === "help") {
+                    input.value = ""
+                    const helpMe = document.createElement("pre")
+
+                     
+                    helpMe.innerText = `Available commands:
+────────────────────────────────────────────
+navigate <folder>  - cd into folders. e.g.: navigate /projects
+display <thing>  - View content. Try: display about
+open <filename.md> - Opens a note. Example: open note1.md
+clear         - Clears the terminal screen`;
+
+                    helpMe.style.fontSize = '8px';
+                    helpMe.style.color = 'orange';
+                    helpMe.style.padding = '1px';
+                    container.append(helpMe);
+                    handled = true;
+                    
+                }
                 // Only display error if none of the above matched
                 if (!handled && input.value.trim() !== "") {
                     const errorDiv = document.createElement("div");
+                    errorDiv.classList.add("error-div")
                     errorDiv.textContent = "Error: Unknown command!";
                     errorDiv.style.color = "red";
                     errorDiv.style.fontWeight = "bold";
@@ -384,4 +382,4 @@ const terminal = () => {
 
 terminal();
 
-
+ 

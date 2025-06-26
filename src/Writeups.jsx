@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useTheme } from "./ThemeProvider"
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from "remark-gfm"
+import rehypeRaw from "rehype-raw"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { atomOneDark, dracula } from "react-syntax-highlighter/dist/esm/styles/hljs"
 
@@ -14,7 +15,7 @@ export default function (props) {
     const [displayNote, setDisplayNote] = useState(false)
     const [markdown, setMarkdown] = useState("")
     const topic = props.topic.map((t, i) => {
-        return <li className="topic-tag" style={{color: theme ==="white" ? "black" :"white",background: theme}}  key={i}>{t}</li>
+        return <li className="topic-tag" style={{color: theme === "white" || theme === "wheat" ? "black" :"white",background: theme}}  key={i}>{t}</li>
    })
 
    useEffect(() => {
@@ -44,19 +45,20 @@ export default function (props) {
 
     const customStyle = {
         background: theme, 
-        color: theme === "aqua" ? "black" : theme === "white" ? "black" : "white", 
+        color: theme === "wheat" ? "black" : theme === "white" ? "black" : "white", 
         // color: "red",
         padding: "1rem", 
         borderRadius: "8px",
-        fontSize: ".6rem", 
+        fontSize: "1rem", 
         overflowX: "auto", 
+        border: "1px solid white"
     }
     
  
     if (displayNote) {
         return (
             <div className="note-container" >
-                <button className="back-button" onClick={toggleNotes}>
+                <button style={{color: theme}} className="back-button" onClick={toggleNotes}>
                     <FontAwesomeIcon icon={faLessThan}/>
                 </button>
                 <div className="note-display">
@@ -69,9 +71,10 @@ export default function (props) {
                     <ReactMarkdown
                         children={markdown}
                         remarkPlugins={[remarkGfm]}
+                        rehypePlugins={[rehypeRaw]}
                         components={{
                             img({ node, ...props }){
-                                return <img {...props} style={{ width: '100%',maxWidth: '100%', height: 'auto', marginLeft:'auto', marginRight: 'auto' }} />;
+                                return <img {...props} style={{ display: 'block', margin: '1.5rem auto', width: '500px' }} />;
                             },
                             code({ node, inline, className, children, ...props }) {
                                 const match = /language-(\w+)/.exec(className || "");
@@ -126,7 +129,7 @@ export default function (props) {
                         <FontAwesomeIcon icon={faBook} color={theme} size="1x"/>
                     </div>
 
-                    <div className="writeup"  style={{display: "flex", fontFamily: "Space Mono, monospace", color: theme}}>
+                    <div className="writeup"  style={{display: "flex", color: theme}}>
                         {props.title}
                     </div>
 
