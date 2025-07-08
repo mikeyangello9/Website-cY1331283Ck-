@@ -19,6 +19,13 @@ export default [
         description: "This artefact is a lightweight, real-time intrusion detection system built using Python and custom-trained YOLOv5/YOLOv8 models. It identifies physical intrusions such as fighting and vandalism in video streams and images.",
         link: "https://github.com/mikeyangello9/detect_server_fyp",
         technology : ["Flask","CNN", "Raspberry PI"]
-    }
+    },
+    {
+        id:4,
+        name: "Log Analyser",
+        description: "A Python script for analysing log files and detecting suspicious security patterns. worked on with Kye-Otsuka",
+        link: "https://github.com/kyeotsuka/Python-Log-Analyser",
+        technology : ["Python","ArgParse", "Regex"]
+    },
     
 ]

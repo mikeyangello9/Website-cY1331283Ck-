@@ -1,7 +1,8 @@
 import Experience from "./Experience"
 import Interface from "./Interface"
+import NotFound from "./NotFound"
 import { Canvas } from '@react-three/fiber'
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, Navigate } from "react-router-dom"
 import Home from "./Home"
 import About from "./About"
 import Projects from "./Projects"
@@ -48,8 +49,10 @@ export default function SceneBox(){
             <Routes>
                 {/* <Route path="/" element={<div className="ui"><Home/></div>}></Route> */}
                 <Route path="/about" element={<div style={{ background: "none", border: "none", boxShadow: "none"}} className="ui"><About/></div>}></Route>
-                <Route path="/projects" element={<div className="ui"><Projects/></div>}></Route>
-                <Route path="/notes" element={<div style={{ background: "none", border: "none", boxShadow: "none"}} className="ui"><Notes/></div>}></Route> 
+                <Route path="/projects" element={<div style={{ background: "none", border: "none", boxShadow: "none"}} className="ui-projects"><Projects/></div>}></Route>
+                <Route path="/notes" element={<div style={{ background: "none", border: "none", boxShadow: "none"}} className="ui-projects"><Notes/></div>}></Route> 
+
+                
             </Routes>
             <DreiLoader/>
 

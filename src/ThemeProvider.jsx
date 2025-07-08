@@ -4,7 +4,7 @@ const ThemeContext = createContext()
 
 
 export function ThemeProvider({ children }) {
-    const [theme, setTheme] = useState("white") // default theme
+    const [theme, setTheme] = useState("white") 
 
     const updateTheme = (newColour) => {
         console.log("Upadating theme to:", newColour)

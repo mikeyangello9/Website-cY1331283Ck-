@@ -1,41 +1,31 @@
 export default [
+ 
     {
         id: 1,
         folder: "Exploitation",
-        title: "Report writing",
-        body: "Exploitation/Report Writing.md",
-        topic: ["burpsuite", "DVWA", "Exploitation"]
-    },
-    {
-        id: 2,
-        title: "test",
-        body: "test.md",
-        topic: ["burpsuite", "DVWA", "whoami"]
-    },
-    {
-        id: 3,
-        title: "test",
-        body: "test.md",
-        topic: ["burpsuite", "DVWA", "whoami"]
-    },
-    {
-        id: 4,
-        title: "test",
-        body: "test.md",
-        topic: ["burpsuite", "DVWA", "whoami"]
-    },
-    {
-        id: 5,
-        title: "test",
-        body: "test.md",
-        topic: ["burpsuite", "DVWA", "whoami"]
-    },
-    {
-        id: 6,
-        folder: "Exploitation",
         title: "Heap and Heap Overflow",
         body: "Exploitation/Heap_Overflow_Cleaned.md",
-        topic: ["burpsuite", "DVWA", "Exploitation"]
+        topic: ["C", "Heap", "Exploitation"],
+        date: "28-06-2025"
     },
+
+    {
+        id: 2,
+        title: "Introduction",
+        body: "Blog001.md",
+        topic: ["About", "intro", "Recon"],
+        date: "30-06-2025"
+    },
+    
+    {
+        id: 3,
+        title: "SQL basics for SQLi",
+        folder: "Portswigger",
+        body: "Portswigger/SQL injection.md",
+        topic: ["web", "burpsuite", "Portswigger"],
+        date: "28-06-2025"
+    },
+
+    
    
 ]

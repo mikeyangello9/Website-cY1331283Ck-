@@ -12,7 +12,7 @@ export default function About(){
 
                 
             <div className="detail">
-                <p>Hey, I'm Micheal</p>
+                <p style={{color: "white"}}>Hey, I'm Micheal</p>
                 <div className="profile">
                 <pre className="ascii-art"  style={{color:theme}}>
                 {`
@@ -35,6 +35,15 @@ export default function About(){
 
                         `}
 </pre>
+                </div>
+
+                <div className="socials">
+                    <ul className="socials-list">
+                        <li> <a href="https://www.linkedin.com/in/aiwekhoe-michael-a37150268/" target="_blank">Linkedin</a></li>
+                        <li> <a href="https://github.com/mikeyangello9" target="_blank">GitHub</a></li>
+                        <li> <a href="" target="_blank">Email</a></li>
+                    </ul>
+                   
                 </div>
 
             </div>
