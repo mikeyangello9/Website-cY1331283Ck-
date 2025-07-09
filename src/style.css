@@ -70,7 +70,7 @@ canvas{
     padding: 7px;
     font-size: 1rem;
     list-style: none;
-    opacity: 0.5;
+    opacity: 100;
     width: auto;
     margin: 0.1rem;
 }
@@ -151,14 +151,15 @@ canvas{
         justify-content: space-around;
         width: 300px;
         height: 30px;
-        border:.1px solid white;
+        /* border:.1px solid white; */
         
         
         
     }
 
     .container > div{
-        margin-top: -18px;
+        margin-top: -19px;
+        opacity: 100;
     }
     
 }
@@ -1321,4 +1322,10 @@ canvas{
     width: fit-content;
     padding: .5rem;
     border-radius: 8px;
+}
+
+
+.highlighted svg{
+    fill: white;
+    
 }
