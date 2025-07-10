@@ -223,7 +223,7 @@ export default function Model()
         center
         occlude
       >
-        <iframe className="frame" src="terminal.html" />
+        <iframe className="frame" src="./terminal.html" />
       </Html>
 
       {/* Route-based HTML UI panel */}
