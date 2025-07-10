@@ -17,7 +17,7 @@ import Display from "./Display"
 export default function Interface(){
   const [highlight, setHighlight] = useState('')
   const { theme } = useTheme()
-  console.log(theme)
+  
   const showHighlighted = useCallback((navElement) => {
     setHighlight(navElement)
   }, [])
@@ -27,7 +27,7 @@ export default function Interface(){
 
   const toggleAccessDisplay = () => {
       setToggleDisplay(!toggleDisplay)
-      console.log("toggled!")
+      
   }
 
  

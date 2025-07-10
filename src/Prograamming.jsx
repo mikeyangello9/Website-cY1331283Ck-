@@ -7,7 +7,7 @@ import { faBook, faLink } from "@fortawesome/free-solid-svg-icons"
 
 export default function Programming(props){
     const { theme } = useTheme()
-    console.log(props.technology)
+
     const technologies = props.technology
     const listOfTech = technologies.map((technology, index) => {
         return <li key={index}>
