@@ -1,5 +1,5 @@
 import { marked } from "marked";
-import NotesData from "../src/NotesData.js";
+import NotesData from "../../src/NotesData.js";
 
 const terminal = () => {
     
