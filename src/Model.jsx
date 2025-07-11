@@ -227,10 +227,7 @@ export default function Model()
       </Html>
 
       {/* Route-based HTML UI panel */}
-      <Routes>
-        <Route
-          path="/"
-          element={
+     
             <Html
               position={[3.5, 4.1, -1.088]}
               transform
@@ -243,9 +240,7 @@ export default function Model()
                 <Home theme={theme} />
               </div>
             </Html>
-          }
-        />
-      </Routes>
+
     </primitive>
 )
 }
