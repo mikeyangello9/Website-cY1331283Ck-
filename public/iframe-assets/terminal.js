@@ -2,7 +2,7 @@
 // import NotesData from "../../src/NotesData.js";
 
 const NotesData = [
- 
+
     {
         id: 1,
         folder: "Exploitation",
