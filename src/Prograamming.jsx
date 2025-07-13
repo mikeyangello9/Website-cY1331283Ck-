@@ -17,15 +17,12 @@ export default function Programming(props){
         </li> 
     })
     return <>
-        <div className="programming-projects">
+      
             
-                <div className="programming-project">
+                <div className="project-component">
 
                     <div className="details">
                         
-                        <div className="type">
-                            <FontAwesomeIcon color={theme}icon={faBook}/>
-                        </div>
 
                         <div className="center">
                             <h2 className="name" style={{fontFamily: "Montserrat, sans-serif", color: theme}}>{props.name}</h2>
@@ -36,15 +33,17 @@ export default function Programming(props){
 
                         
 
-                        <div className="github-link">
-                            <a  className="link" href={props.link} style={{background: theme, color: theme ==="white" ? "black" :"white"}}>
-                                 <FontAwesomeIcon color={theme === "white" ? "black" : "white"}icon={faLink}/>
-                            </a>
-                        </div>
+                       
                             
                         
+                    </div> 
+                    <div className="github-link">
+                        <a  className="link" href={props.link} style={{background: theme, color: theme ==="white" ? "black" :"white"}}>
+                                <FontAwesomeIcon color={theme === "white" ? "black" : "white"}icon={faLink}/>
+                        </a>
+                    
                     </div>
                 </div>
-        </div>   
+
     </>
 }

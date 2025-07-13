@@ -9,14 +9,14 @@ export default [
     {
         id:2,
         name: "HIIT",
-        description: "high erval Training apphigh intensity interval Training apphigh intensity interval Training app",
+        description: "high interval Training apphigh intensity interval Training apphigh intensity interval Training app",
         link: "https://github.com/mikeyangello9/HIIT",
-        technology : ["Javascript","HTML", "NodeJS", "SQLITE3"] 
+        technology : ["Javascript", "NodeJS", "SQLITE3"] 
     },
     {
         id:3,
         name: "Physical IDS Webstream",
-        description: "This artefact is a lightweight, real-time intrusion detection system built using Python and custom-trained YOLOv5/YOLOv8 models. It identifies physical intrusions such as fighting and vandalism in video streams and images.",
+        description: "A lightweight, real-time intrusion detection system built using Python and custom-trained YOLOv5/YOLOv8 models.",
         link: "https://github.com/mikeyangello9/detect_server_fyp",
         technology : ["Flask","CNN", "Raspberry PI"]
     },

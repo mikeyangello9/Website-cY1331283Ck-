@@ -47,10 +47,10 @@ export default function SceneBox(){
             <Interface/>
         
             <Routes>
-                <Route path="/" element={<div className="ui"><Home/></div>}></Route>
+                <Route path="/" element={<div><Home/></div>}></Route>
                 <Route path="/about" element={<div style={{ background: "none", border: "none", boxShadow: "none"}} className="ui"><About/></div>}></Route>
-                <Route path="/projects" element={<div style={{ background: "none", border: "none", boxShadow: "none"}} className="ui-projects"><Projects/></div>}></Route>
-                <Route path="/notes" element={<div style={{ background: "none", border: "none", boxShadow: "none"}} className="ui-projects"><Notes/></div>}></Route> 
+                <Route path="/projects" element={<div style={{ background: "none", border: "none", boxShadow: "none"}}><Projects/></div>}></Route>
+                <Route path="/notes" element={<div style={{ background: "none", border: "none", boxShadow: "none"}} className="ui-notes"><Notes/></div>}></Route> 
 
                 
             </Routes>

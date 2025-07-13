@@ -1,4 +1,4 @@
-import { OrbitControls, BakeShadows, Stage } from '@react-three/drei'
+import { OrbitControls, BakeShadows, Stage, Float } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
 import { Suspense, useEffect, useState } from 'react'
 import Model from './Model'
@@ -27,17 +27,17 @@ export default function Experience({ onProgress }) {
 
   return (
     <>
-      {/* <Perf position="bottom-left" /> */}
+       <BakeShadows />
 
-      {isMobileDevice && <OrbitControls makeDefault enableZoom={false} />}
-
-      <BakeShadows />
-
-    
-        <Stage>
+      <Stage>
+        {isMobileDevice ? (
+          <Float speed={1.5} rotationIntensity={1} floatIntensity={0.5}>
+            <Model theme={theme} />
+          </Float>
+        ) : (
           <Model theme={theme} />
-        </Stage>
-      
+        )}
+      </Stage>
     </>
   )
 }

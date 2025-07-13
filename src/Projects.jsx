@@ -29,14 +29,7 @@ export default function Projects(){
 
 
     return <>
-        <div  className="project-panel ">
-
-            <div className="overlay"></div>
-            <div className="project-grid">{projectElements}</div>
-            
-           
-            
-        </div>
+        <div  className="project-panel">{projectElements}</div>
     </>
 }
 
