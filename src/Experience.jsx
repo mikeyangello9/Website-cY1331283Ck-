@@ -29,14 +29,9 @@ export default function Experience({ onProgress }) {
     <>
        <BakeShadows />
 
-      <Stage>
-        {isMobileDevice ? (
-          <Float speed={1.5} rotationIntensity={1} floatIntensity={0.5}>
-            <Model theme={theme} />
-          </Float>
-        ) : (
-          <Model theme={theme} />
-        )}
+      <Stage> 
+          <Model/>
+
       </Stage>
     </>
   )

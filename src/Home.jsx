@@ -7,8 +7,8 @@ import { useTheme } from "./ThemeProvider"
 export default function Home({ theme }) {
 
 
-    return <> 
-  
+    return <>
+        
     </>
 }
 

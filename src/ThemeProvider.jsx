@@ -4,12 +4,17 @@ const ThemeContext = createContext()
 
 
 export function ThemeProvider({ children }) {
-    const [theme, setTheme] = useState("white") 
+    const [theme, setTheme] = useState(() => {
+        return localStorage.getItem('theme') || 'white'
+    }) 
 
     const updateTheme = (newColour) => {
         console.log("Upadating theme to:", newColour)
         setTheme(newColour)
+        localStorage.setItem('theme', newColour)
     }
+
+
 
     return (
         <ThemeContext.Provider value={{ theme, updateTheme }}>

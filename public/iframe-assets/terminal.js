@@ -104,6 +104,7 @@ const terminal = () => {
     let inNotesDirectory = false;
     document.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
+            container.scrollTop = container.scrollHeight;
             const wrapper = document.createElement("div");
             wrapper.classList.add("wrapper");
             const input = document.createElement("input");
@@ -409,6 +410,14 @@ clear         - Clears the terminal screen`;
                 inputArray[inputArray.length - 1].disabled = false;
                 inputArray[inputArray.length - 1].value = "";
             }
+        }
+        
+        if (e.key == "Tab") return
+        const inputs = document.querySelectorAll(".terminal-input");
+        const lastInput = inputs[inputs.length - 1];    
+
+        if (lastInput && document.activeElement != lastInput) {
+            lastInput.focus()
         }
     });
 };

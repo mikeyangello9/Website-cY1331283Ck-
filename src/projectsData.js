@@ -2,14 +2,14 @@ export default [
     {
         id:1,
         name: "PIXLIB",
-        description: "This javaScript module converts images loaded as bas64 to pixels and enable physics to have mouse interactions, create multiple instances and position using traditional CSS. I plan to make it an anti-stenography tools, as it can reduce the dimensions of images",
+        description: "This javaScript module converts images loaded as bas64 to pixels and enable physics to have mouse interactions.",
         link: "https://github.com/mikeyangello9/PIXLIB",
         technology : ["Javascript","HTML canvas", "CSS"] 
     },
     {
         id:2,
         name: "HIIT",
-        description: "high interval Training apphigh intensity interval Training apphigh intensity interval Training app",
+        description: "A Full stack HIIT app",
         link: "https://github.com/mikeyangello9/HIIT",
         technology : ["Javascript", "NodeJS", "SQLITE3"] 
     },
@@ -23,7 +23,7 @@ export default [
     {
         id:4,
         name: "Log Analyser",
-        description: "A Python script for analysing log files and detecting suspicious security patterns. worked on with Kye-Otsuka",
+        description: "A Python script for analysing log files and detecting suspicious security patterns. worked on with Kye-Otsuka. I plan on using it in place of a SIEM engine for my SOC lab project.",
         link: "https://github.com/kyeotsuka/Python-Log-Analyser",
         technology : ["Python","ArgParse", "Regex"]
     },

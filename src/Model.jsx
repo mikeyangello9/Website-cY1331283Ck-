@@ -1,4 +1,4 @@
-import { OrbitControls, Html, Stage, BakeShadows, useProgress } from '@react-three/drei'
+import { OrbitControls, Html, Stage, BakeShadows, useProgress, Float } from '@react-three/drei'
 import { useFrame, useLoader, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
 import { Perf } from 'r3f-perf'
@@ -12,35 +12,44 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import { useTheme } from "./ThemeProvider"
 
 
-import { Suspense } from 'react'
+
 
 export default function Model()
 {
 
-    // const {x, y, z, rotx, roty, rotz } = useControls({ // debugger
-    //     x: 0,
-    //     y: 0,
-    //     z: 0,
-    //     rotx: 0,
-    //     roty: 0,
-    //     rotz: 0
-    // })
+    const {x, y, z} = useControls({ // debugger
+        x: 0,
+        y: 0,
+        z: 0,
+        
+    })
     
     const model = useMemo(() => useLoader(GLTFLoader, './revamp2grunge.glb'), []);
     const children = useMemo(() => model.scene.children, [model]);
     const directionalLightRef = useRef()
     // useHelper(directionalLightRef, THREE.DirectionalLightHelper, 5)
-    
+    const today = new Date()
     const { camera } = useThree()
     const { theme } = useTheme()
     const cursor = useRef({ posX: 0, posY: 0 });
     const [isMobileDevice, setIsMobileDevice] = useState(isMobile)
-    // check if mobile    
+    const [floatMode, setFloatMode] = useState(isMobile)
+
+    const [now, setNow] = useState(new Date())
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setNow(new Date())
+      }, 1000)
+      return () => clearInterval(interval)
+    }, [])
 
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMobileDevice(window.innerWidth < 1025)
+            const nowMobile = window.innerWidth < 1025
+            setIsMobileDevice(nowMobile)
+            setFloatMode(nowMobile)
         }
 
         window.addEventListener('resize', handleResize)
@@ -53,24 +62,30 @@ export default function Model()
         cursor.current.posX = (event.clientX / window.innerWidth - 0.5) * 2;
         cursor.current.posY = -(event.clientY / window.innerHeight - 0.5) * 2;
         };
-        if (!isMobileDevice) {
+        if (!floatMode) {
             window.addEventListener("mousemove", handleMouseMove);
-        } else{
-                window.removeEventListener("mousemove", handleMouseMove);
-                camera.position.z = 20
+        } 
+        return () => {
+            window.removeEventListener("mousemove", handleMouseMove);
+            camera.position.z = 15
+            
         }
         
 
             
        
-    }, [isMobileDevice]); // Runs only once
+    }, [floatMode]);
     
     useFrame(() => {
-        if(!isMobileDevice){
+        if(!floatMode){
             camera.position.x += (cursor.current.posX - camera.position.x) * 0.05;
             camera.position.y += (cursor.current.posY - camera.position.y) * 0.05;
-            camera.position.z = 6; // Keep depth constant
+            camera.position.z = 6; 
             camera.lookAt(0, 0, 0);
+        } else if (floatMode) {
+          // Ensure correct camera angle for float mode
+          camera.position.set(0, 0, 20)
+          camera.lookAt(0, 0, 0)
         }
         
     })
@@ -79,9 +94,6 @@ export default function Model()
     children.forEach((child) => {
         child.castShadow = false;
         child.receiveShadow = false;
-    })
-
-    children.forEach((child) => {
         child.frustumCulled = true;
     })
 
@@ -208,39 +220,59 @@ export default function Model()
 
     }, [])
     
-  
-    return(
-    
 
-    <primitive object={model.scene} scale={[1.8, 1.8, 1.8]} position={[0, -1, 0]}>
-      {/* Terminal iframe overlay */}
-      <Html
-        position={[-0.6, 4.1, -1.088]}
-        transform
-        rotateX={-0.25}
-        distanceFactor={4}
-        wrapperClass="terminal"
-        center
-        occlude
-      >
+    const ToggleButton = () =>
+    !isMobileDevice && (
+      <Html position={[-4, 5.1, -1.088]} transform rotateX={-0.25} distanceFactor={4} center scale={[0.8, 0.8, 0.8]}>
+        <button
+          onClick={() => setFloatMode(prev => !prev)}
+          style={{
+            padding: '6px 10px',
+            fontSize: '2rem',
+            background: theme,
+            color: 'white',
+            border: '1px solid #444',
+            borderRadius: '5px',
+            fontFamily: 'monospace',
+            cursor: 'pointer'
+          }}
+        >
+          {floatMode ? 'Interact Mode' : 'Float Mode'}
+        </button>
+      </Html>
+    )
+
+
+    const modelContent = (
+    <primitive object={model.scene} scale={[1.8, 1.8, 1.8]} position={[0, -1, 0]}  >
+      <Html position={[-0.6, 4.1, -1.088]} transform rotateX={-0.25} distanceFactor={4} wrapperClass="terminal" center occlude>
         <iframe className="frame" src="/iframe-assets/terminal.html" />
       </Html>
 
-      {/* Route-based HTML UI panel */}
-     
-            <Html
-              position={[3.5, 4.1, -1.088]}
-              transform
-              rotateX={-0.25}
-              distanceFactor={4}
-              center
-              scale={[0.8, 0.8, 0.8]}
-            >
-              <div>
-                <Home theme={theme} />
-              </div>
-            </Html>
+      <Html position={[4, 4.1, -1.088]} transform rotateX={-0.25} distanceFactor={4} center scale={[0.8, 0.8, 0.8]}>
+        <div>
+          <div className="info-board">
+            <div className="time">
+              {now.getHours()}:{now.getMinutes()}:{now.getSeconds()}
+            </div>
+              
+            
+            <div className='copyright'>© {now.getFullYear()} Michael Aiwekhoe</div>
 
+            <span>25*c</span>
+          </div>
+        </div>
+      </Html>
+
+      <ToggleButton />
     </primitive>
-)
+  )
+  
+    return floatMode ? (
+    <Float speed={1.5} rotationIntensity={1} floatIntensity={0.5}>
+      {modelContent}
+    </Float>
+  ) : (
+    modelContent
+  )
 }

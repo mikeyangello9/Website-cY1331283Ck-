@@ -34,11 +34,11 @@ Expect breakdowns of attack simulations, detection rules I’ve tested, mini wri
 
   
 
-## 3. To Help Others (and My Future Self)
+## 3. To hopefully help Others (and My Future Self)
 
   
 
-If you’re a student, junior analyst, or self-taught hacker — I hope some of these notes help you shortcut a rabbit hole I’ve already gone down. And if you’re reading this from the future, past-Micheal says: here’s what we knew back then.
+if you’re reading this from the future, past-Micheal says: here’s what we knew back then.
 
   
 
@@ -48,21 +48,11 @@ If you’re a student, junior analyst, or self-taught hacker — I hope some of 
 
 ## What You’ll Find Here
 
-  
-
-- SOC Lab Notes & Detection Engineering  
-
 - Reverse Engineering & Exploit Development (currently learning it as I am really interested in this aspect of cyber security, its basically the 'level 9999' boss of cyber security)  
 
-- Log Analysis & Python/C Projects  
+- Project setups and planning 
 
-- Tooling Experiments + Writeups  
+- Tooling Experiments + Writeups 
 
-- Certification Prep, & Methodologies  
-
-
-
-<div style="background: rgba(255, 0, 0, 0.5);padding:.5rem;border-radius:10px"><p>
-	</p>ℹ️ If you’re more CLI-inclined, feel free to explore using the terminal above. You can use:
-</div>
+- My attempts at Labs and CTFs
 
