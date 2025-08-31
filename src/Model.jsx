@@ -17,12 +17,12 @@ import { useTheme } from "./ThemeProvider"
 export default function Model()
 {
 
-    const {x, y, z} = useControls({ // debugger
-        x: 0,
-        y: 0,
-        z: 0,
+    // const {x, y, z} = useControls({ // debugger
+    //     x: 0,
+    //     y: 0,
+    //     z: 0,
         
-    })
+    // })
     
     const model = useMemo(() => useLoader(GLTFLoader, './revamp2grunge.glb'), []);
     const children = useMemo(() => model.scene.children, [model]);

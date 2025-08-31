@@ -25,6 +25,14 @@ export default [
         topic: ["web", "burpsuite", "Portswigger"],
         date: "28-06-2025"
     },
+    {
+        id: 4,
+        title: "SOC lab-Projects",
+        folder: "Projects writeups",
+        body: "Project writeups/SOC (security Operations Centre) Lab.md",
+        topic: ["Blue Team", "SOC", "Defense"],
+        date: "30-08-2025"
+    },
 
     
    
