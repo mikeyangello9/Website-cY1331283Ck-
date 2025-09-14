@@ -33,6 +33,14 @@ export default [
         topic: ["Blue Team", "SOC", "Defense"],
         date: "30-08-2025"
     },
+    {
+        id: 5,
+        title: "Brief Malware Analysis writeup",
+        folder: "Projects writeups",
+        body: "Project writeups/Malware Analysis.md",
+        topic: ["IOC", "Networking", "Reverse Engineering"],
+        date: "11-09-2025"
+    },
 
     
    
