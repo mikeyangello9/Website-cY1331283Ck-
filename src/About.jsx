@@ -51,10 +51,10 @@ export default function About(){
 
 
             <div className="aboutme">
-                <p>I'm a University of Portsmouth final-year BSc Cyber Security and Forensic Computing student with practical experience in malware analysis, system hardening, and team security competitions. To hone my technical abilities, I've created intrusion detection systems, taken part in national CTFs, and established a personal penetration testing lab. I'm currently looking for a graduate position in software or cyber security where I can put my skills to use, develop with a big team, and help safeguard digital infrastructure.</p>
+                <p>I’m a First-Class BSc Cyber Security and Forensic Computing graduate from the University of Portsmouth, <span style={{background:theme, padding: "1px"}}>certified in CompTIA Security+</span>. I have hands-on experience in malware analysis, system hardening, and SOC tooling (Sentinel, Wazuh, Defender for Endpoint), alongside offensive practice through CTFs and a personal pentesting lab. I’m now preparing for Hack The Box’s CPTS certification to build on my defensive background and pursue a graduate role in cybersecurity threat research.</p>
                 <div className="resume">
                     <button style={{background:theme}} className="cv">
-                            <a style={{color: theme ==="white" ? "black" :"white"}} target="_blank" href="https://docs.google.com/document/d/16G7XQx2aGRFc261ozmbhOtxy73BGTaaw/edit">RESUME</a>
+                            <a style={{color: theme ==="white" ? "black" :"white"}} target="_blank"  rel="noopener noreferrer" href="./Michael_Aiwekhoe_Cybersecurity_Analyst_CV.pdf">RESUME</a>
                     </button>
                 </div>
 
