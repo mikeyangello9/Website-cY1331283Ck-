@@ -27,9 +27,18 @@ export default function Experience({ onProgress }) {
 
   return (
     <>
-       <BakeShadows />
+      <BakeShadows />
 
-      <Stage> 
+      <ambientLight intensity={0.15} />
+
+      <directionalLight
+        position={[6, 10, 4]}
+        intensity={3.5}
+        castShadow
+        shadow-mapSize={[2048, 2048]}
+      />
+
+      <Stage environment={null}> 
           <Model/>
 
       </Stage>

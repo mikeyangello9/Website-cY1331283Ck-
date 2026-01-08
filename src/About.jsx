@@ -12,7 +12,7 @@ export default function About(){
 
                 
             <div className="detail">
-                <p style={{color: "white"}}>Hey, I'm Micheal</p>
+                <p style={{color: "white", background:theme, display: "inline-block", padding: ".4rem", borderRadius: "10px"}}>Hey, I'm Micheal</p>
                 <div className="profile">
                 <pre className="ascii-art"  style={{color:theme}}>
                 {`

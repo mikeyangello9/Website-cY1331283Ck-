@@ -3,29 +3,51 @@ import { useFrame, useLoader, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
 import { Perf } from 'r3f-perf'
 import { useEffect, useRef, useState, useMemo } from 'react'
-import { Routes,Route } from 'react-router-dom'
-import Home from './Home'
 import { isMobile } from 'react-device-detect';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js'
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
+import { applyToon } from './applyToon';
+import * as THREE from 'three'
+
 
 import { useTheme } from "./ThemeProvider"
 
+// Model.jsx (top of file, OUTSIDE the component)
+// const outlineMaterial = new THREE.MeshBasicMaterial({
+//   color: 'black',
+//   side: THREE.BackSide,
+//   depthWrite: false,
+// });
 
 
 
 export default function Model()
 {
 
-    // const {x, y, z} = useControls({ // debugger
-    //     x: 0,
-    //     y: 0,
-    //     z: 0,
-        
-    // })
+    // toon
+
+    function createToonGradient() {
+      const canvas = document.createElement("canvas");
+      canvas.width = 3;
+      canvas.height = 1;
+
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "#000";
+      ctx.fillRect(0, 0, 1, 1); 
+      ctx.fillStyle = "#777";
+      ctx.fillRect(1, 0, 1, 1); 
+      ctx.fillStyle = "#fff";
+      ctx.fillRect(2, 0, 1, 1); 
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.minFilter = THREE.NearestFilter;
+      texture.magFilter = THREE.NearestFilter;
+      texture.generateMipmaps= false;
+      return texture;
+
+    }
     
-    const model = useMemo(() => useLoader(GLTFLoader, './revamp2grunge.glb'), []);
+    const model = useLoader(GLTFLoader, './revamp2grunge.glb');
     const children = useMemo(() => model.scene.children, [model]);
+    const gradientMap = useMemo(() => createToonGradient(), []) // memo
     const directionalLightRef = useRef()
     // useHelper(directionalLightRef, THREE.DirectionalLightHelper, 5)
     const today = new Date()
@@ -91,11 +113,58 @@ export default function Model()
     })
 
     
+  useEffect(() => {
     children.forEach((child) => {
-        child.castShadow = false;
-        child.receiveShadow = false;
-        child.frustumCulled = true;
+      child.castShadow = false;
+      child.receiveShadow = false;
+      child.frustumCulled = true;
+    });
+  }, [children]);
+
+
+  // toon
+  useEffect(() => {
+    children.forEach((child, index) => {
+    console.log({
+      mesh: child.name,
+      materialName: child.material?.name ?? 'NO NAME',
+      materialType: child.material?.type
+    });
+
     })
+  }, [children]);
+
+  // toon
+  const meshesToStyle = [
+  { name: 'caseTop', color: '#f2a141' },
+  { name: 'casebottom', color: '#f2a141' },
+  { name: 'topPaddingfitting', color: '#374151' },
+  { name: 'bottom_padding', color: '#374151' },
+  { name: 'sideport', color: '#f2a141' },
+  { name: 'gpioport', color: '#f2a141' },
+  { name: 'Cylinder001', color: '#f2a141' },
+  { name: 'Cylinder002', color: '#374151' },
+  { name: 'Cylinder003', color: '#374151' },
+  { name: 'Cylinder004', color: '#374151' },
+  
+];
+
+  useEffect(() => {
+    if (!model || !gradientMap) return;
+
+  meshesToStyle.forEach(({ name, color }) => {
+    applyToon({
+      scene: model.scene,
+      meshName: name,
+      color,
+      gradientMap,
+    });
+  });
+  }, [model. gradientMap])
+
+
+    
+
 
 
 

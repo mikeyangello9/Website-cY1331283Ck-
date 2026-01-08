@@ -1238,7 +1238,9 @@ canvas{
     fill: white;
     
 }
-
+.project-panel::-webkit-scrollbar {
+  display: none;
+}
 
 .project-panel {
     position: absolute;
@@ -1253,8 +1255,13 @@ canvas{
     padding: 1rem;
     overflow: auto;
     
-    z-index: 10; /* Above canvas */
+    z-index: 10; 
+      /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(120, 120, 120, 0.45) transparent;
 }
+
+
 
 .project-component {
     background: rgba(255, 255, 255, 0.1);
